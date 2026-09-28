@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GiroSUS · Perguntas e respostas</title>
+  <meta name="description" content="Consulta rápida de perguntas e respostas sobre o painel GiroSUS.">
+  <meta name="theme-color" content="#1565c0">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <header class="topo">
+    <h1>GiroSUS <span class="ponto">·</span> Perguntas e respostas</h1>
+    <p class="subtitulo">Leitos do SUS em Goiás, medidos em leito-dia. Base SIH/SUS, safra 2025.</p>
+  </header>
+
+  <main class="principal" data-busca="inicio">
+    <div class="caixa-busca">
+      <svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      <input class="campo-busca" type="search" placeholder="Busque uma pergunta ou palavra"
+             aria-label="Buscar pergunta" autocomplete="off" autofocus>
+    </div>
+    <p class="legenda"><span class="amostra-amarela" aria-hidden="true"></span>Cartão amarelo = definição, o básico para entender o produto</p>
+    <div class="chips" role="group" aria-label="Filtrar por categoria"></div>
+    <p class="contador" aria-live="polite"></p>
+    <div class="resultados"></div>
+  </main>
+
+  <footer class="rodape">
+    Atalhos: <kbd>/</kbd> para buscar · <kbd>Esc</kbd> para limpar
+  </footer>
+
+  <button class="botao-flutuante" type="button" aria-label="Abrir busca rápida" aria-expanded="false" aria-controls="painel-chat">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/>
+    </svg>
+  </button>
+
+  <section id="painel-chat" class="painel-chat" data-busca="painel" hidden aria-label="Busca rápida">
+    <div class="painel-topo">
+      <strong>Pergunte ao GiroSUS</strong>
+      <button class="fechar" type="button" aria-label="Fechar">×</button>
+    </div>
+    <div class="painel-corpo">
+      <div class="caixa-busca">
+        <svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        <input class="campo-busca" type="search" placeholder="O que te perguntaram?" aria-label="Buscar pergunta" autocomplete="off">
+      </div>
+      <p class="legenda"><span class="amostra-amarela" aria-hidden="true"></span>Amarelo = definição</p>
+      <div class="chips" role="group" aria-label="Filtrar por categoria"></div>
+      <p class="contador" aria-live="polite"></p>
+      <div class="resultados"></div>
+    </div>
+  </section>
+
+  <div class="aviso" role="status" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

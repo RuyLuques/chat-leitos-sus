@@ -1,0 +1,2663 @@
+[
+  {
+    "id": 1,
+    "categoria": "Definições",
+    "pergunta": "O que é o GiroSUS?",
+    "resposta": "É o nosso produto de dados: um painel no Power BI que mostra quem ocupa os leitos do SUS em Goiás, por quanto tempo e quanto isso custa, tudo medido em leito-dia. Usa só dado público e gratuito (a base SIH/SUS), na safra 2025. Foi feito para diretores de hospital e secretarias de saúde planejarem melhor. É uma extensão do projeto leitos-sus, feito em grupo no programa WhiteCube Trainee.",
+    "palavras_chave": [
+      "girosus",
+      "produto",
+      "painel",
+      "o que é",
+      "definição",
+      "em uma frase"
+    ]
+  },
+  {
+    "id": 2,
+    "categoria": "Definições",
+    "pergunta": "O que é o SUS?",
+    "resposta": "Sistema Único de Saúde, o sistema público de saúde do Brasil. Ele paga as internações feitas nos hospitais públicos e nos privados que atendem pelo SUS. O GiroSUS olha só para essas internações pagas pelo SUS.",
+    "palavras_chave": [
+      "sus",
+      "sistema único de saúde",
+      "saúde pública",
+      "definição"
+    ]
+  },
+  {
+    "id": 3,
+    "categoria": "Definições",
+    "pergunta": "O que é o DATASUS?",
+    "resposta": "É o departamento de informática do Ministério da Saúde. Ele junta os dados do SUS e publica tudo de graça na internet, em arquivos mensais. É de lá que vêm os arquivos do SIH que o GiroSUS usa.",
+    "palavras_chave": [
+      "datasus",
+      "ministério da saúde",
+      "fonte",
+      "download",
+      "definição"
+    ]
+  },
+  {
+    "id": 4,
+    "categoria": "Definições",
+    "pergunta": "O que é o SIH/SUS?",
+    "resposta": "Sistema de Informações Hospitalares do SUS. É onde os hospitais registram cada internação para receber o pagamento do SUS, então funciona como o registro de cobrança das internações. O DATASUS publica esse registro todo mês, em arquivos chamados RD (AIH reduzida), um por estado e por mês (em Goiás: RDGO + ano e mês, ex.: RDGO2505). É a única base de dados usada no painel.",
+    "palavras_chave": [
+      "sih",
+      "sih/sus",
+      "sistema de informações hospitalares",
+      "arquivo rd",
+      "rdgo",
+      "definição"
+    ]
+  },
+  {
+    "id": 5,
+    "categoria": "Definições",
+    "pergunta": "O que é AIH?",
+    "resposta": "Autorização de Internação Hospitalar. É o documento que o hospital preenche para cada internação e envia ao SUS para receber o pagamento. Nele vão a data de entrada e de saída, o diagnóstico, o procedimento, o hospital, a cidade do paciente e o valor. No GiroSUS, cada AIH regular é uma internação. O número da AIH identifica a internação, não a pessoa.",
+    "palavras_chave": [
+      "aih",
+      "autorização de internação hospitalar",
+      "documento",
+      "formulário",
+      "conta",
+      "definição"
+    ]
+  },
+  {
+    "id": 6,
+    "categoria": "Definições",
+    "pergunta": "O que é AIH regular e AIH de continuação?",
+    "resposta": "AIH regular (IDENT = 1) é a conta normal de uma internação. AIH de continuação (IDENT = 5) acontece quando o paciente fica internado muito tempo e o hospital cobra a mesma internação em partes, mês a mês. O GiroSUS usa só as regulares, para não contar o mesmo paciente duas vezes.",
+    "palavras_chave": [
+      "aih regular",
+      "continuação",
+      "ident",
+      "ident 1",
+      "ident 5",
+      "definição"
+    ]
+  },
+  {
+    "id": 7,
+    "categoria": "Definições",
+    "pergunta": "O que é uma base de dados?",
+    "resposta": "É um conjunto organizado de informações, guardado em tabelas. No GiroSUS a base de dados é o SIH/SUS: uma tabela gigante em que cada linha é uma internação. O projeto também tem as bases CNES (leitos) e IBGE (população), mas elas não entram nos números do painel.",
+    "palavras_chave": [
+      "base de dados",
+      "banco de dados",
+      "dataset",
+      "fonte de dados",
+      "definição"
+    ]
+  },
+  {
+    "id": 8,
+    "categoria": "Definições",
+    "pergunta": "O que é tabela, linha e coluna?",
+    "resposta": "Tabela é como uma planilha do Excel. Cada linha é um registro (no SIH, uma internação). Cada coluna é uma informação sobre esse registro, como a data de entrada (DT_INTER), os dias internado (DIAS_PERM) ou o valor pago (VAL_TOT). Os nomes em maiúsculo, como N_AIH, são colunas do SIH; os em minúsculo, como leito_dias, são colunas das tabelas do painel.",
+    "palavras_chave": [
+      "tabela",
+      "linha",
+      "coluna",
+      "campo",
+      "registro",
+      "planilha",
+      "definição"
+    ]
+  },
+  {
+    "id": 9,
+    "categoria": "Definições",
+    "pergunta": "O que é safra, e qual safra foi usada?",
+    "resposta": "Safra é o ano em que o hospital apresentou a conta (a AIH) ao SUS, ou seja, o ano da competência. Não é o ano em que o paciente internou. O GiroSUS usa a safra 2025: as contas apresentadas de janeiro a dezembro de 2025, que é o último ano completo disponível. Só entram AIHs regulares (IDENT = 1).",
+    "palavras_chave": [
+      "safra",
+      "safra 2025",
+      "qual safra",
+      "ano",
+      "2025",
+      "período",
+      "definição"
+    ]
+  },
+  {
+    "id": 10,
+    "categoria": "Definições",
+    "pergunta": "O que é competência?",
+    "resposta": "É o mês em que o hospital apresentou a internação para pagamento, normalmente o mês da alta ou o seguinte. O DATASUS organiza os arquivos por competência (um arquivo por mês). Juntando as 12 competências de um ano, você tem a safra.",
+    "palavras_chave": [
+      "competência",
+      "mês de competência",
+      "mes_cmpt",
+      "ano_cmpt",
+      "definição"
+    ]
+  },
+  {
+    "id": 11,
+    "categoria": "Definições",
+    "pergunta": "O que é leito?",
+    "resposta": "É a cama de internação do hospital, com a estrutura para cuidar do paciente. Pode ser clínico, cirúrgico, de UTI, obstétrico, psiquiátrico e outros. É o recurso mais escasso do hospital: sem leito livre, o paciente espera ou é transferido.",
+    "palavras_chave": [
+      "leito",
+      "cama",
+      "vaga",
+      "definição"
+    ]
+  },
+  {
+    "id": 12,
+    "categoria": "Definições",
+    "pergunta": "O que é leito-dia?",
+    "resposta": "Um paciente ocupando um leito por um dia. É a unidade de medida do GiroSUS: a soma dos dias de internação (coluna DIAS_PERM). Uma internação de 5 dias gera 5 leitos-dia. Quem entra e sai no mesmo dia (10,6% das internações) conta zero.",
+    "palavras_chave": [
+      "leito dia",
+      "leito-dia",
+      "leitos-dia",
+      "unidade de medida",
+      "dias internado",
+      "definição"
+    ]
+  },
+  {
+    "id": 13,
+    "categoria": "Definições",
+    "pergunta": "O que é internação?",
+    "resposta": "É quando o paciente dá entrada no hospital e ocupa um leito, até receber alta, ser transferido ou falecer. No GiroSUS, cada internação é uma AIH regular. Em 2025 foram 457.403.",
+    "palavras_chave": [
+      "internação",
+      "internações",
+      "internar",
+      "hospitalização",
+      "definição"
+    ]
+  },
+  {
+    "id": 14,
+    "categoria": "Definições",
+    "pergunta": "O que é alta?",
+    "resposta": "É a saída do paciente do hospital. Na base aparece como data de saída (DT_SAIDA), que também vale para transferência e óbito. A conta do SUS só fecha depois da alta.",
+    "palavras_chave": [
+      "alta",
+      "saída",
+      "dt_saida",
+      "definição"
+    ]
+  },
+  {
+    "id": 15,
+    "categoria": "Definições",
+    "pergunta": "O que é permanência?",
+    "resposta": "É quantos dias o paciente ficou internado. A permanência média é leitos-dia dividido por internações. Em Goiás, em 2025, foi de 4,0 dias.",
+    "palavras_chave": [
+      "permanência",
+      "permanência média",
+      "tempo de internação",
+      "média de dias",
+      "definição"
+    ]
+  },
+  {
+    "id": 16,
+    "categoria": "Definições",
+    "pergunta": "O que é tempo típico e dia acima do típico?",
+    "resposta": "Tempo típico é a mediana de dias do mesmo procedimento na safra: metade dos pacientes fica menos, metade fica mais. Dia acima do típico é cada dia que passa disso (regra: max(0, leito_dias menos tempo_tipico)). É sinal para investigar, não acusação: casos graves ficam mais por bons motivos.",
+    "palavras_chave": [
+      "tempo típico",
+      "acima do típico",
+      "dia acima do típico",
+      "excesso",
+      "definição"
+    ]
+  },
+  {
+    "id": 17,
+    "categoria": "Definições",
+    "pergunta": "O que é mediana?",
+    "resposta": "É o valor do meio quando você coloca os números em ordem. Se 5 pacientes ficaram 1, 2, 3, 4 e 30 dias, a mediana é 3 (a média daria 8, puxada pelo caso de 30). Por isso o GiroSUS usa a mediana no tempo típico.",
+    "palavras_chave": [
+      "mediana",
+      "média",
+      "estatística",
+      "definição"
+    ]
+  },
+  {
+    "id": 18,
+    "categoria": "Definições",
+    "pergunta": "O que é procedimento?",
+    "resposta": "É o que o hospital fez no paciente, como tratamento de pneumonia, parto cesariano ou uma cirurgia. Cada procedimento tem um código de 10 dígitos na tabela SIGTAP (coluna PROC_REA) e é ele que define quanto o SUS paga.",
+    "palavras_chave": [
+      "procedimento",
+      "proc_rea",
+      "tratamento",
+      "cirurgia",
+      "definição"
+    ]
+  },
+  {
+    "id": 19,
+    "categoria": "Definições",
+    "pergunta": "O que é SIGTAP?",
+    "resposta": "É a tabela nacional de procedimentos do SUS, do Ministério da Saúde. Ela lista cada procedimento com código, nome e o valor que o SUS paga (o pacote). O GiroSUS usa o código SIGTAP para saber qual procedimento foi feito.",
+    "palavras_chave": [
+      "sigtap",
+      "tabela sus",
+      "tabela de procedimentos",
+      "valor do procedimento",
+      "definição"
+    ]
+  },
+  {
+    "id": 20,
+    "categoria": "Definições",
+    "pergunta": "O que é CID-10?",
+    "resposta": "Classificação Internacional de Doenças, 10ª versão. É o código usado no mundo todo para diagnóstico (ex.: J189 é pneumonia). A primeira letra mostra o capítulo, e o GiroSUS usa esse capítulo para montar os grupos de doença (J respiratório, I circulatório, S e T lesões e traumas).",
+    "palavras_chave": [
+      "cid",
+      "cid-10",
+      "diagnóstico",
+      "classificação de doenças",
+      "definição"
+    ]
+  },
+  {
+    "id": 21,
+    "categoria": "Definições",
+    "pergunta": "O que é o CNES?",
+    "resposta": "Cadastro Nacional de Estabelecimentos de Saúde. É o cadastro de todos os hospitais e clínicas do país, com o número de leitos de cada um. Cada hospital tem um código CNES de 7 dígitos, que é como ele aparece no painel. A base de leitos do CNES existe no projeto, mas não entra nos números do painel.",
+    "palavras_chave": [
+      "cnes",
+      "cadastro nacional de estabelecimentos",
+      "hospital",
+      "código do hospital",
+      "definição"
+    ]
+  },
+  {
+    "id": 22,
+    "categoria": "Definições",
+    "pergunta": "O que é o IBGE?",
+    "resposta": "Instituto Brasileiro de Geografia e Estatística, que faz o Censo e as estimativas de população. No GiroSUS, o IBGE serve só para trocar o código do município pelo nome da cidade.",
+    "palavras_chave": [
+      "ibge",
+      "população",
+      "censo",
+      "nomes de municípios",
+      "definição"
+    ]
+  },
+  {
+    "id": 23,
+    "categoria": "Definições",
+    "pergunta": "O que é valor pago?",
+    "resposta": "É quanto o SUS pagou ao hospital pela internação (coluna VAL_TOT), pela tabela federal. Não é o custo real do hospital, que não é público. Em 2025 foram R$ 726,1 milhões.",
+    "palavras_chave": [
+      "valor pago",
+      "val_tot",
+      "pagamento",
+      "quanto pagou",
+      "definição"
+    ]
+  },
+  {
+    "id": 24,
+    "categoria": "Definições",
+    "pergunta": "O que é giro de leito?",
+    "resposta": "É um indicador de quantas vezes um leito recebe um novo paciente num período. Quanto mais rápido o paciente sai (sem prejuízo ao cuidado), mais pacientes o mesmo leito atende. Daí vem o nome GiroSUS.",
+    "palavras_chave": [
+      "giro de leito",
+      "giro",
+      "rotatividade",
+      "definição"
+    ]
+  },
+  {
+    "id": 25,
+    "categoria": "Definições",
+    "pergunta": "O que é taxa de ocupação?",
+    "resposta": "É a porcentagem dos leitos existentes que estão ocupados. Para calcular, precisa saber quantos leitos o hospital tem (isso vem do CNES). Por isso o GiroSUS ainda não mostra a taxa: mostra os leitos ocupados.",
+    "palavras_chave": [
+      "taxa de ocupação",
+      "ocupação",
+      "lotação",
+      "definição"
+    ]
+  },
+  {
+    "id": 26,
+    "categoria": "Definições",
+    "pergunta": "O que é município de residência e de atendimento?",
+    "resposta": "Município de residência é onde o paciente mora (MUNIC_RES). Município de atendimento é onde fica o hospital (MUNIC_MOV). Quando são diferentes, o paciente foi internado fora de casa.",
+    "palavras_chave": [
+      "município de residência",
+      "município de atendimento",
+      "munic_res",
+      "munic_mov",
+      "definição"
+    ]
+  },
+  {
+    "id": 27,
+    "categoria": "Definições",
+    "pergunta": "O que é UTI?",
+    "resposta": "Unidade de Terapia Intensiva, o leito para pacientes graves. O SUS paga a diária de UTI à parte: R$ 631 por dia em média, somando R$ 176 milhões em Goiás em 2025.",
+    "palavras_chave": [
+      "uti",
+      "terapia intensiva",
+      "leito de uti",
+      "definição"
+    ]
+  },
+  {
+    "id": 28,
+    "categoria": "Definições",
+    "pergunta": "O que é regulação?",
+    "resposta": "É a central do estado ou do município que controla as vagas em tempo real e decide para qual hospital o paciente vai. O GiroSUS não faz regulação: ele serve para planejamento, com dados de 1 a 2 meses atrás.",
+    "palavras_chave": [
+      "regulação",
+      "central de regulação",
+      "vaga",
+      "definição"
+    ]
+  },
+  {
+    "id": 29,
+    "categoria": "Definições",
+    "pergunta": "O que é o Power BI?",
+    "resposta": "É a ferramenta da Microsoft para montar painéis e gráficos interativos. O GiroSUS é um relatório no Power BI com 7 páginas, e o gestor clica nos filtros (hospital, município, doença, período) para ver os números dele.",
+    "palavras_chave": [
+      "power bi",
+      "painel",
+      "dashboard",
+      "relatório",
+      "definição"
+    ]
+  },
+  {
+    "id": 30,
+    "categoria": "Definições",
+    "pergunta": "O que é casemix?",
+    "resposta": "É o perfil de gravidade dos pacientes de um hospital. Hospital de referência recebe casos mais graves e, por isso, tende a ter permanências maiores. É um dos vieses declarados na comparação entre hospitais.",
+    "palavras_chave": [
+      "casemix",
+      "case mix",
+      "gravidade",
+      "perfil de pacientes",
+      "definição"
+    ]
+  },
+  {
+    "id": 31,
+    "categoria": "Produto",
+    "pergunta": "O que o gestor ganha com o painel?",
+    "resposta": "Cinco ganhos. Capacidade: reduzir só 10% dos dias além do tempo típico libera cerca de 20 mil internações por ano, sem abrir leito novo. Vidas: ver de onde vêm os pacientes (57% dos leitos de Goiânia são de quem mora fora) e planejar antes de a ambulância sair. Dinheiro: o SUS paga pacote fixo, então dia a mais sai do caixa do hospital. Planejamento: a ocupação respiratória sobe 31% em maio, dá para reforçar a equipe em março. Prestação de contas: ter o número do hospital ou município na mão quando o Ministério Público, a imprensa ou o secretário perguntar.",
+    "palavras_chave": [
+      "benefício",
+      "ganho",
+      "vantagem",
+      "valor",
+      "por que comprar",
+      "o que eu ganho"
+    ]
+  },
+  {
+    "id": 32,
+    "categoria": "Produto",
+    "pergunta": "O que cada tipo de gestor ganha?",
+    "resposta": "Diretor de hospital: saber onde o leito está travado, quanto cada dia rende e em que dia da semana o hospital enche. Secretaria Estadual: ver quais hospitais e municípios consomem mais leito e quem depende de quem, para decidir onde investir. Secretaria Municipal: quanto leito os seus moradores usam, onde são internados e quanto isso custa ao SUS.",
+    "palavras_chave": [
+      "diretor",
+      "secretaria estadual",
+      "secretaria municipal",
+      "público alvo",
+      "persona",
+      "cliente"
+    ]
+  },
+  {
+    "id": 33,
+    "categoria": "Produto",
+    "pergunta": "Por que o nome GiroSUS?",
+    "resposta": "Giro vem de giro de leito, o indicador hospitalar de quantas vezes um leito recebe um novo paciente. É exatamente o que o produto mede. SUS diz de quem são os dados e para quem é o produto. É curto, fácil de falar e sugere movimento e monitoramento, sem prometer tempo real, que a base não entrega.",
+    "palavras_chave": [
+      "nome",
+      "giro de leito",
+      "marca",
+      "origem do nome"
+    ]
+  },
+  {
+    "id": 34,
+    "categoria": "Produto",
+    "pergunta": "Como surgiu a ideia do projeto?",
+    "resposta": "De uma dor concreta: o paciente do interior transferido para Goiânia que não encontra vaga e é transferido de novo. Ao investigar, vimos que vaga livre agora não existe em nenhuma base pública. O que existe, e explica a falta de vaga, é o uso do leito: quem ocupa, por quanto tempo e quanto custa. O leito é o recurso mais escasso do hospital, e quase ninguém mede em leito-dia.",
+    "palavras_chave": [
+      "tema",
+      "origem",
+      "motivação",
+      "dor",
+      "problema",
+      "por que este tema"
+    ]
+  },
+  {
+    "id": 35,
+    "categoria": "Produto",
+    "pergunta": "Qual a história da Dona Maria?",
+    "resposta": "É o caso ilustrativo do pitch. Dona Maria, 72 anos, pneumonia. Sai de Trindade de ambulância, chega a Goiânia e não tem leito. Vai para outro hospital, e cada hora na estrada é risco. O problema não é só falta de leito, é leito parado: em Goiás, 1 em cada 23 pacientes ocupa mais de um quarto de todos os leitos do SUS. O GiroSUS mostra onde está esse leito travado.",
+    "palavras_chave": [
+      "dona maria",
+      "caso",
+      "história",
+      "storytelling",
+      "exemplo",
+      "trindade",
+      "pitch"
+    ]
+  },
+  {
+    "id": 36,
+    "categoria": "Produto",
+    "pergunta": "Qual a frase de abertura da apresentação?",
+    "resposta": "\"O seu leito é pago por pacote, mas ocupado por dia. Vamos mostrar onde esses dias estão.\" No material do cliente ela fecha com: \"para a próxima Dona Maria encontrar vaga\". E o resumo em uma frase: com dado público, mensal e gratuito, o gestor passa a ver quem ocupa os leitos do SUS, por quanto tempo e quanto isso custa, e onde agir primeiro.",
+    "palavras_chave": [
+      "frase",
+      "abertura",
+      "slogan",
+      "pitch",
+      "frase de efeito",
+      "fechamento"
+    ]
+  },
+  {
+    "id": 37,
+    "categoria": "Produto",
+    "pergunta": "Quais as três principais descobertas do painel?",
+    "resposta": "Descompasso: o respiratório ocupa mais leito do que recebe (12,5% dos leitos-dia e 8,9% do valor), e o circulatório é o contrário (11,9% dos leitos e 21% do dinheiro). Concentração: 4,4% dos pacientes ocupam 27% dos leitos, que são as internações de mais de 15 dias. Dependência: Goiânia tem 45% dos leitos-dia do estado, e 57% deles são de moradores de outras cidades.",
+    "palavras_chave": [
+      "descobertas",
+      "achados",
+      "insights",
+      "principais resultados",
+      "destaques"
+    ]
+  },
+  {
+    "id": 38,
+    "categoria": "Produto",
+    "pergunta": "Quais são as 7 páginas do painel?",
+    "resposta": "1 Visão geral (quanto leito o SUS usou e quanto pagou). 2 O que ocupa o leito (quais doenças, e se bate com o custo). 3 Hospitais (quem consome mais e quanto recebe por dia). 4 Municípios (quem usa e quem depende de outra cidade). 5 Custo para o SUS (quanto paga por dia em cada doença). 6 Permanência além do típico (onde ficam mais que o normal). 7 Calendário de ocupação (em que época e dia da semana enche).",
+    "palavras_chave": [
+      "páginas",
+      "abas",
+      "telas",
+      "estrutura do painel",
+      "navegação",
+      "sumário"
+    ]
+  },
+  {
+    "id": 39,
+    "categoria": "Produto",
+    "pergunta": "Como as perguntas do painel estão organizadas?",
+    "resposta": "São 34 perguntas numa escada de três níveis. Nível 1, o retrato: quanto? (perguntas 1 a 6). Nível 2, onde e quem: quais doenças, hospitais e municípios ocupam os leitos e quanto recebem (7 a 23). Nível 3, onde agir: onde ficam além do típico, quando a rede enche e quanto se ganharia (24 a 34). Cada pergunta tem uma resposta em número e um gráfico no Power BI.",
+    "palavras_chave": [
+      "34 perguntas",
+      "níveis",
+      "escada",
+      "nível 1",
+      "nível 2",
+      "nível 3",
+      "retrato",
+      "onde agir"
+    ]
+  },
+  {
+    "id": 40,
+    "categoria": "Produto",
+    "pergunta": "Para quem é o material em PDF do painel?",
+    "resposta": "Um documento, três públicos, com etiqueta no canto de cada página. Cliente (gestores): págs. 2 e 4 a 16. Analista (quem monta e apresenta o painel): págs. 17 a 25. Especialistas (professores e banca): págs. 26 a 29 e a ficha técnica. Em números: 1 safra, 1 base, 7 páginas no Power BI, 34 perguntas respondidas e 27 perguntas de cliente e banca.",
+    "palavras_chave": [
+      "pdf",
+      "material",
+      "documento",
+      "três públicos",
+      "analista",
+      "especialista",
+      "como usar o material"
+    ]
+  },
+  {
+    "id": 41,
+    "categoria": "Produto",
+    "pergunta": "Quais são os próximos passos do painel?",
+    "resposta": "1 Permanência oficial do SIGTAP: quantos dias cada hospital passou do tempo esperado pelo Ministério. 2 Ajuste por idade e complexidade: quem está fora do esperado para o perfil que recebe. 3 Leitos existentes do CNES: taxa de ocupação e giro de leito. 4 Previsão mensal: quantos leitos cada hospital vai precisar. 5 Tabela de nomes: hospitais pelo nome, não pelo código.",
+    "palavras_chave": [
+      "próximos passos",
+      "evolução",
+      "roadmap",
+      "futuro",
+      "melhorias",
+      "versão 2"
+    ]
+  },
+  {
+    "id": 42,
+    "categoria": "Produto",
+    "pergunta": "Como apresentar o painel numa reunião de 20 minutos?",
+    "resposta": "2 min, a dor: leito é finito e o SUS paga pacote fixo (use a pneumonia: R$ 377 por dia contra R$ 64). 3 min, nível 1: 1,84 milhão de leitos-dia, 457 mil internações, R$ 726 milhões, 4,0 dias, 5.050 internados num dia comum. 6 min, nível 2: o descompasso respiratório x circulatório e Goiânia (45% dos leitos, 57% de fora). 5 min, nível 3: 4,4% dos pacientes ocupam 27% dos leitos, 44% dos dias acima do típico, simulador de 20 mil internações. 4 min: perguntas e próximos passos.",
+    "palavras_chave": [
+      "roteiro",
+      "reunião",
+      "apresentação",
+      "demo",
+      "demonstração",
+      "20 minutos",
+      "pitch"
+    ]
+  },
+  {
+    "id": 43,
+    "categoria": "Produto",
+    "pergunta": "O que fazer antes da reunião com o cliente?",
+    "resposta": "Filtrar pelo cliente: se for hospital ou município, deixar o painel aberto já filtrado e anotar 3 números dele. Conferir os totais: a safra 2025 tem que bater com o documento. Levar os limites prontos: não é tempo real, R$ é valor pago e não custo, e o tempo típico é referência interna.",
+    "palavras_chave": [
+      "preparação",
+      "antes da reunião",
+      "checklist",
+      "preparar"
+    ]
+  },
+  {
+    "id": 44,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "Preciso integrar com o sistema do meu hospital?",
+    "resposta": "Não. Os dados vêm do DATASUS, do que o próprio hospital já envia todo mês para receber do SUS. Não tem nada para integrar e não tem custo de dados.",
+    "palavras_chave": [
+      "integração",
+      "sistema",
+      "ti",
+      "instalar",
+      "custo de dados",
+      "prontuário"
+    ]
+  },
+  {
+    "id": 45,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "De quanto em quanto tempo o painel atualiza?",
+    "resposta": "Todo mês, quando o DATASUS publica a nova competência. O dado chega com 1 a 2 meses de atraso.",
+    "palavras_chave": [
+      "atualização",
+      "frequência",
+      "mensal",
+      "quando atualiza"
+    ]
+  },
+  {
+    "id": 46,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "Posso ver só o meu hospital ou o meu município?",
+    "resposta": "Sim. Todas as páginas têm filtro de hospital, município, doença e período, e os filtros são sincronizados: ao filtrar um hospital, todas as páginas mudam juntas.",
+    "palavras_chave": [
+      "filtro",
+      "meu hospital",
+      "meu município",
+      "recorte",
+      "segmentação"
+    ]
+  },
+  {
+    "id": 47,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "Os números do meu hospital estão certos?",
+    "resposta": "São os que o próprio hospital enviou ao SUS. Se não baterem com o controle interno, vale revisar o faturamento.",
+    "palavras_chave": [
+      "confiável",
+      "divergência",
+      "não bate",
+      "faturamento",
+      "conferir"
+    ]
+  },
+  {
+    "id": 48,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "Por que meu hospital aparece com muitos dias acima do típico?",
+    "resposta": "Porque, em mais da metade dos dias, os pacientes ficaram além do tempo típico do mesmo procedimento no estado. Pode ser perfil mais grave ou demora na alta. O painel mostra em quais procedimentos isso acontece. É sinal para investigar, não acusação.",
+    "palavras_chave": [
+      "acima do típico",
+      "meu hospital",
+      "permanência alta",
+      "demora na alta"
+    ]
+  },
+  {
+    "id": 49,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "Por que aparece o código e não o nome do hospital?",
+    "resposta": "O SIH só traz o código CNES. Os nomes entram por uma tabela de apoio (dim_hospital), preenchida à mão pela consulta pública do CNES.",
+    "palavras_chave": [
+      "nome do hospital",
+      "código",
+      "cnes",
+      "identificar hospital"
+    ]
+  },
+  {
+    "id": 50,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "Consigo saber de onde vêm os meus pacientes?",
+    "resposta": "Sim. A página de municípios mostra a origem dos internados em cada hospital, inclusive numa matriz origem x destino.",
+    "palavras_chave": [
+      "origem",
+      "de onde vêm",
+      "procedência",
+      "município de residência"
+    ]
+  },
+  {
+    "id": 51,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "Dá para prever o próximo mês?",
+    "resposta": "Ainda não. O histórico já mostra os picos, como o do respiratório em maio. A previsão estatística mês a mês é o próximo passo.",
+    "palavras_chave": [
+      "previsão",
+      "forecast",
+      "próximo mês",
+      "projeção"
+    ]
+  },
+  {
+    "id": 52,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "O que eu faço com essa informação?",
+    "resposta": "Revisar protocolos de alta nos procedimentos com mais dias acima do típico, reforçar altas no fim de semana, reforçar a equipe antes de maio e negociar leitos de retaguarda para internações longas.",
+    "palavras_chave": [
+      "ação",
+      "o que fazer",
+      "recomendação",
+      "plano de ação"
+    ]
+  },
+  {
+    "id": 53,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "O que eu preciso para usar o painel?",
+    "resposta": "Só acesso ao relatório no Power BI. A atualização mensal é feita pela equipe do projeto.",
+    "palavras_chave": [
+      "acesso",
+      "requisitos",
+      "como usar",
+      "licença"
+    ]
+  },
+  {
+    "id": 54,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "Goiânia recebe muito paciente de fora?",
+    "resposta": "Sim. Goiânia concentra 44,7% dos leitos-dia do estado, e 56,6% desses leitos-dia são de moradores de outras cidades.",
+    "palavras_chave": [
+      "goiânia",
+      "capital",
+      "outros municípios",
+      "de fora",
+      "referência",
+      "fluxo de pacientes",
+      "interior"
+    ]
+  },
+  {
+    "id": 55,
+    "categoria": "Perguntas de cliente",
+    "pergunta": "Quanto dá para ganhar reduzindo a permanência?",
+    "resposta": "Reduzir 10% dos dias acima do tempo típico libera cerca de 80,6 mil leitos-dia por ano, o que dá cerca de 20 mil internações a mais com os mesmos leitos. A conta: 10% de 806 mil dias acima do típico, dividido pela permanência média de 4,0 dias. É capacidade liberada estimada, não promessa. No painel tem um simulador de 5% a 30%.",
+    "palavras_chave": [
+      "ganho",
+      "economia",
+      "liberar leitos",
+      "reduzir",
+      "impacto",
+      "cenário",
+      "20 mil",
+      "simulador"
+    ]
+  },
+  {
+    "id": 56,
+    "categoria": "Números 2025",
+    "pergunta": "Quais são os números gerais de 2025?",
+    "resposta": "1.835.227 leitos-dia (1,84 milhão), 457.403 internações em 260 hospitais, R$ 726,1 milhões pagos pelo SUS, permanência média de 4,0 dias e R$ 396 por leito-dia, na média de todas as causas.",
+    "palavras_chave": [
+      "total",
+      "resumo",
+      "internações",
+      "leitos-dia",
+      "valor pago",
+      "quanto pagou",
+      "média de dias",
+      "quanto custa",
+      "cartões",
+      "hospitais"
+    ]
+  },
+  {
+    "id": 57,
+    "categoria": "Números 2025",
+    "pergunta": "Quantos pacientes ficam internados num dia comum?",
+    "resposta": "Cerca de 5.050 pessoas internadas pelo SUS em Goiás num dia comum. O maior dia de 2025 foi 20/05, com 5.722.",
+    "palavras_chave": [
+      "internados por dia",
+      "censo diário",
+      "pico",
+      "dia comum",
+      "ocupação diária"
+    ]
+  },
+  {
+    "id": 58,
+    "categoria": "Números 2025",
+    "pergunta": "Qual doença ocupa mais leito?",
+    "resposta": "Lesões e traumas: 290.559 leitos-dia, 15,8% do total.",
+    "palavras_chave": [
+      "doença",
+      "grupo de doença",
+      "trauma",
+      "lesões",
+      "mais ocupa"
+    ]
+  },
+  {
+    "id": 59,
+    "categoria": "Números 2025",
+    "pergunta": "Quem ocupa mais leito do que recebe, e quem recebe mais do que ocupa?",
+    "resposta": "Ocupam mais do que recebem: respiratório (12,5% dos leitos-dia e 8,9% do valor) e saúde mental (5,0% e 0,9%). Recebem mais do que ocupam: circulatório (11,9% e 21,0%) e câncer (5,1% e 10,8%).",
+    "palavras_chave": [
+      "descompasso",
+      "recebe",
+      "três lentes",
+      "respiratório",
+      "circulatório",
+      "saúde mental",
+      "câncer"
+    ]
+  },
+  {
+    "id": 60,
+    "categoria": "Números 2025",
+    "pergunta": "Quais procedimentos ocupam mais leito?",
+    "resposta": "Pneumonia ou gripe: 143.480 leitos-dia (7,8%). Depois: infecções bacterianas e sepse 84.876 (4,6%), cirurgias múltiplas 83.371 (4,5%), psiquiatria de curta permanência 56.512 (3,1%), parto cesariano 49.070 (2,7%), insuficiência cardíaca 39.109 (2,1%), AVC 36.326 (2,0%) e infecção urinária 35.430 (1,9%). Alguns nomes vêm do diagnóstico mais comum do procedimento; conferir o nome oficial no SIGTAP.",
+    "palavras_chave": [
+      "procedimento",
+      "pneumonia",
+      "ranking",
+      "sepse",
+      "cesariana",
+      "avc",
+      "top procedimentos"
+    ]
+  },
+  {
+    "id": 61,
+    "categoria": "Números 2025",
+    "pergunta": "Quais hospitais consomem mais leito?",
+    "resposta": "Top 10 por leitos-dia (código CNES, cidade, leitos-dia, % acima da mediana, R$ por dia): 7743068 Goiânia 148,5 mil, 52%, R$ 509. 2338262 Goiânia 120,6 mil, 56%, R$ 298. 0547484 Uruaçu 90,2 mil, 54%, R$ 260. 2338424 Goiânia 64,9 mil, 56%, R$ 389. 9680977 Aparecida 59,2 mil, 52%, R$ 480. 2339196 Goiânia 47,9 mil, 50%, R$ 288. 2338734 Goiânia 47,6 mil, 55%, R$ 479. 2506815 Goiânia 45,0 mil, 36%, R$ 1.038. 0965324 Goiânia 44,5 mil, 56%, R$ 307. 2338351 Goiânia 42,7 mil, 53%, R$ 615.",
+    "palavras_chave": [
+      "hospitais",
+      "ranking",
+      "top 10",
+      "maiores hospitais",
+      "7743068",
+      "uruaçu"
+    ]
+  },
+  {
+    "id": 62,
+    "categoria": "Números 2025",
+    "pergunta": "Quanto os 10 maiores hospitais concentram?",
+    "resposta": "711 mil leitos-dia, 38,7% do estado, entre 260 hospitais.",
+    "palavras_chave": [
+      "concentração",
+      "10 maiores",
+      "top 10",
+      "participação"
+    ]
+  },
+  {
+    "id": 63,
+    "categoria": "Números 2025",
+    "pergunta": "Quanto cada hospital recebe por leito-dia?",
+    "resposta": "Entre os 10 maiores, vai de R$ 260 (0547484, Uruaçu) a R$ 1.038 (2506815, Goiânia). A média do estado é R$ 396.",
+    "palavras_chave": [
+      "valor por dia",
+      "receita",
+      "hospital",
+      "r$ por leito-dia",
+      "quanto recebe"
+    ]
+  },
+  {
+    "id": 64,
+    "categoria": "Números 2025",
+    "pergunta": "Em quais cidades ficam os leitos usados?",
+    "resposta": "Goiânia (44,7%), Aparecida de Goiânia (7,2%), Anápolis (6,8%), Uruaçu (4,9%) e Rio Verde (4,4%).",
+    "palavras_chave": [
+      "cidades",
+      "municípios",
+      "onde ficam",
+      "atendimento",
+      "anápolis",
+      "rio verde",
+      "aparecida"
+    ]
+  },
+  {
+    "id": 65,
+    "categoria": "Números 2025",
+    "pergunta": "Moradores de qual cidade mais usam leito?",
+    "resposta": "Goiânia (389.462 leitos-dia), Aparecida de Goiânia (165.600) e Anápolis (101.311).",
+    "palavras_chave": [
+      "moradores",
+      "residência",
+      "quem usa",
+      "município de residência"
+    ]
+  },
+  {
+    "id": 66,
+    "categoria": "Números 2025",
+    "pergunta": "Quais cidades mais dependem de leito em outra cidade?",
+    "resposta": "Entre municípios com 3.000 ou mais internações, a parte dos moradores internados fora de casa: Inhumas 67%, Goianira 66%, Trindade 64%, Senador Canedo 61%, Itaberaí 54%, Caldas Novas 54%, Águas Lindas 46% e Aparecida 45%.",
+    "palavras_chave": [
+      "dependência",
+      "fora de casa",
+      "inhumas",
+      "goianira",
+      "trindade",
+      "senador canedo",
+      "transferência"
+    ]
+  },
+  {
+    "id": 67,
+    "categoria": "Números 2025",
+    "pergunta": "Quantas internações acontecem fora da cidade do paciente?",
+    "resposta": "Em 2025, 37% das internações aconteceram fora do município onde a pessoa mora. Sem vaga, o paciente espera no pronto-socorro ou é levado para outra cidade.",
+    "palavras_chave": [
+      "fora do município",
+      "37%",
+      "deslocamento",
+      "transferência",
+      "outra cidade"
+    ]
+  },
+  {
+    "id": 68,
+    "categoria": "Números 2025",
+    "pergunta": "Quanto custam ao SUS os moradores de um município?",
+    "resposta": "Depende do município, e o painel mostra numa tabela. Exemplo: os moradores de Aparecida de Goiânia custaram R$ 74,6 milhões em 2025.",
+    "palavras_chave": [
+      "custo por município",
+      "aparecida",
+      "gasto municipal",
+      "moradores"
+    ]
+  },
+  {
+    "id": 69,
+    "categoria": "Números 2025",
+    "pergunta": "Onde o SUS gasta mais, em reais?",
+    "resposta": "Circulatório (R$ 152,8 milhões), lesões e traumas (R$ 97,6 milhões) e câncer (R$ 78,1 milhões).",
+    "palavras_chave": [
+      "gasto",
+      "maior gasto",
+      "despesa",
+      "onde gasta"
+    ]
+  },
+  {
+    "id": 70,
+    "categoria": "Números 2025",
+    "pergunta": "Qual internação é mais cara?",
+    "resposta": "Por internação: malformações (R$ 4.416), osteomuscular (R$ 3.567) e circulatório (R$ 3.479).",
+    "palavras_chave": [
+      "mais cara",
+      "custo por internação",
+      "malformações",
+      "osteomuscular"
+    ]
+  },
+  {
+    "id": 71,
+    "categoria": "Números 2025",
+    "pergunta": "Quanto o SUS paga por leito-dia em cada doença?",
+    "resposta": "Média do estado: R$ 396. Osteomuscular R$ 1.040, malformações R$ 878, câncer R$ 831, circulatório R$ 699, perinatal R$ 393, digestivo R$ 350, geniturinário R$ 348, lesões e traumas R$ 336, sintomas mal definidos R$ 322, sistema nervoso R$ 298, endócrinas R$ 289, respiratório R$ 281, infecciosas R$ 275, gravidez e parto R$ 241, pele R$ 132 e saúde mental R$ 69. É valor pago, não custo real do hospital.",
+    "palavras_chave": [
+      "rende mais",
+      "rende menos",
+      "valor por dia",
+      "por doença",
+      "saúde mental",
+      "pele",
+      "osteomuscular"
+    ]
+  },
+  {
+    "id": 72,
+    "categoria": "Números 2025",
+    "pergunta": "O gasto muda ao longo do ano?",
+    "resposta": "Pouco: vai de R$ 55,9 milhões (fevereiro) a R$ 64,6 milhões (julho) por mês.",
+    "palavras_chave": [
+      "gasto mensal",
+      "sazonalidade do gasto",
+      "mês",
+      "variação"
+    ]
+  },
+  {
+    "id": 73,
+    "categoria": "Números 2025",
+    "pergunta": "Quantos leitos-dia ficaram acima do típico, e em quais doenças?",
+    "resposta": "806.293 leitos-dia, 43,9% do total. Por doença (mil dias acima e % dos dias do próprio grupo): lesões e traumas 142 mil (49%), respiratório 105 mil (46%), circulatório 101 mil (46%), digestivo 66 mil (44%), infecciosas 65 mil (42%), geniturinário 62 mil (47%), câncer 42 mil (45%), gravidez e parto 39 mil (27%).",
+    "palavras_chave": [
+      "acima do típico",
+      "806 mil",
+      "43,9%",
+      "excesso",
+      "dias excedentes",
+      "por doença"
+    ]
+  },
+  {
+    "id": 74,
+    "categoria": "Números 2025",
+    "pergunta": "Qual o peso das internações longas?",
+    "resposta": "Internações de mais de 15 dias são só 4,4% dos pacientes, mas ocupam 27,3% dos leitos-dia. Em outras palavras, 1 em cada 23 pacientes ocupa mais de um quarto dos leitos. É onde o giro de leito trava.",
+    "palavras_chave": [
+      "longa permanência",
+      "mais de 15 dias",
+      "internação longa",
+      "pacientes crônicos",
+      "concentração"
+    ]
+  },
+  {
+    "id": 75,
+    "categoria": "Números 2025",
+    "pergunta": "Como as internações se dividem por tempo de duração?",
+    "resposta": "Faixa: % das internações e % dos leitos-dia. 0 dia: 10,6% e 0%. 1 a 3 dias: 58,2% e 26,5%. 4 a 7 dias: 17,9% e 22,8%. 8 a 15 dias: 8,9% e 23,4%. 16 a 30 dias: 3,7% e 20,0%. Mais de 30 dias: 0,7% e 7,3%.",
+    "palavras_chave": [
+      "faixa de duração",
+      "distribuição",
+      "quem fica pouco",
+      "quem fica muito",
+      "duração"
+    ]
+  },
+  {
+    "id": 76,
+    "categoria": "Números 2025",
+    "pergunta": "Quais hospitais têm mais dias acima do típico?",
+    "resposta": "0965324 (56,5%), 2338424 (56,2%) e 2338262 (55,9%). No gráfico, azul escuro marca quem tem 55% ou mais dos dias acima do típico.",
+    "palavras_chave": [
+      "hospitais",
+      "acima do típico",
+      "ranking",
+      "0965324"
+    ]
+  },
+  {
+    "id": 77,
+    "categoria": "Números 2025",
+    "pergunta": "Qual hospital gira o leito mais rápido?",
+    "resposta": "O 2506815 (Goiânia): 3,5 dias em média e 35,9% dos dias acima do típico. Também é o que mais recebe por leito-dia entre os 10 maiores (R$ 1.038).",
+    "palavras_chave": [
+      "giro rápido",
+      "eficiência",
+      "2506815",
+      "melhor hospital"
+    ]
+  },
+  {
+    "id": 78,
+    "categoria": "Números 2025",
+    "pergunta": "Em que mês os leitos enchem mais?",
+    "resposta": "Maio: média de 5.250 internados por dia. O pico do ano foi 20/05/2025, com 5.722.",
+    "palavras_chave": [
+      "mês",
+      "pico",
+      "maio",
+      "sazonalidade",
+      "quando enche"
+    ]
+  },
+  {
+    "id": 79,
+    "categoria": "Números 2025",
+    "pergunta": "Em que dia da semana entra e sai mais gente?",
+    "resposta": "Entradas: terça (1.435) e segunda (1.421) são os maiores; quarta 1.399, quinta 1.394, sexta 1.279 e no fim de semana cerca de 940. Altas: sexta tem mais (1.467) e domingo tem menos (934).",
+    "palavras_chave": [
+      "dia da semana",
+      "entradas",
+      "altas",
+      "segunda",
+      "sexta",
+      "domingo",
+      "fim de semana"
+    ]
+  },
+  {
+    "id": 80,
+    "categoria": "Números 2025",
+    "pergunta": "Qual doença é mais sazonal?",
+    "resposta": "Respiratório: vai de 455 (dezembro) a 818 (maio) leitos ocupados por dia. A ocupação respiratória sobe 31% em maio. Para comparar: circulatório varia de 573 a 661 e traumas de 755 a 817.",
+    "palavras_chave": [
+      "sazonal",
+      "sazonalidade",
+      "respiratório",
+      "inverno",
+      "maio",
+      "gripe",
+      "variação no ano"
+    ]
+  },
+  {
+    "id": 81,
+    "categoria": "Números 2025",
+    "pergunta": "Onde agir primeiro?",
+    "resposta": "Nos procedimentos e hospitais com mais dias acima do típico, nas altas de fim de semana e no preparo para maio.",
+    "palavras_chave": [
+      "prioridade",
+      "agir",
+      "ação",
+      "por onde começar"
+    ]
+  },
+  {
+    "id": 82,
+    "categoria": "Números 2025",
+    "pergunta": "Quanto o SUS paga numa pneumonia, por dia?",
+    "resposta": "Pneumonia sem UTI em Goiás, 2025 (valor pago e quanto dá por dia): 1 a 2 dias R$ 606 (R$ 377/dia). 3 a 4 dias R$ 626 (R$ 183/dia). 5 a 7 dias R$ 684 (R$ 117/dia). 8 a 14 dias R$ 839 (R$ 84/dia). 15 dias ou mais R$ 1.451 (R$ 64/dia). O valor sobe pouco; os dias a mais pesam no caixa do hospital.",
+    "palavras_chave": [
+      "pneumonia",
+      "377",
+      "64",
+      "por dia",
+      "curiosidade",
+      "pacote"
+    ]
+  },
+  {
+    "id": 83,
+    "categoria": "Números 2025",
+    "pergunta": "Quanto custa uma internação, em média?",
+    "resposta": "Metade das internações custou até R$ 616; a média foi R$ 1.587, puxada por UTI e cirurgia. Exemplos (valor médio, dias, por dia): parto normal R$ 579, 2,3 dias, R$ 257. Parto cesariano R$ 721, 2,5, R$ 294. Pneumonia ou gripe R$ 1.446, 5,7, R$ 255. AVC R$ 2.003, 6,6, R$ 303. Insuficiência cardíaca R$ 2.035, 6,8, R$ 297. Psiquiatria curta R$ 1.032, 12,6, R$ 82. Dia de UTI: R$ 631, com 6,7 dias de UTI em média.",
+    "palavras_chave": [
+      "custo médio",
+      "mediana",
+      "parto",
+      "cesárea",
+      "avc",
+      "insuficiência cardíaca",
+      "valor médio"
+    ]
+  },
+  {
+    "id": 84,
+    "categoria": "Números 2025",
+    "pergunta": "Quanto o SUS paga por UTI, saúde mental e acompanhante?",
+    "resposta": "UTI: R$ 631 por dia, pago à parte. Em 2025 a UTI somou R$ 176 milhões, 24% de tudo o que o SUS pagou em internações em Goiás. Saúde mental: R$ 82 por dia, paga por dia, então o valor cresce com a permanência. Acompanhante: diárias em 52% das internações, quando a lei garante acompanhante (crianças, idosos, gestantes).",
+    "palavras_chave": [
+      "uti",
+      "diária",
+      "psiquiatria",
+      "acompanhante",
+      "pago por dia",
+      "176 milhões"
+    ]
+  },
+  {
+    "id": 85,
+    "categoria": "Regras e cálculos",
+    "pergunta": "Por que medir em leito-dia e não em número de internações?",
+    "resposta": "Porque contar internações esconde o que pesa na rede: um paciente que fica 30 dias ocupa o mesmo leito que dez pacientes de 3 dias. O leito-dia mede o que falta na rede, que é tempo de leito.",
+    "palavras_chave": [
+      "por que leito-dia",
+      "contar internações",
+      "unidade",
+      "escolha"
+    ]
+  },
+  {
+    "id": 86,
+    "categoria": "Regras e cálculos",
+    "pergunta": "Como é calculado o R$ por leito-dia?",
+    "resposta": "Soma do valor pago dividida pela soma dos leitos-dia (razão das somas, não média das razões). Assim cada internação pesa pelo seu tamanho; a média das razões supervalorizaria estadias curtas.",
+    "palavras_chave": [
+      "valor por leito-dia",
+      "razão das somas",
+      "cálculo",
+      "396"
+    ]
+  },
+  {
+    "id": 87,
+    "categoria": "Regras e cálculos",
+    "pergunta": "Como o SUS paga uma internação?",
+    "resposta": "Por pacote de procedimento, não por dia. Cada procedimento (ex.: tratamento de pneumonia) tem um valor fixo na tabela nacional SIGTAP. Na alta, o hospital apresenta a AIH e recebe o pacote. Se o paciente fica mais dias que o previsto, na maior parte dos casos o valor quase não muda. As exceções pagas por dia são UTI, saúde mental e diárias de acompanhante.",
+    "palavras_chave": [
+      "pagamento",
+      "pacote",
+      "sigtap",
+      "tabela sus",
+      "como paga",
+      "faturamento"
+    ]
+  },
+  {
+    "id": 88,
+    "categoria": "Regras e cálculos",
+    "pergunta": "Como são definidos os grupos de doença?",
+    "resposta": "Pelo capítulo da CID-10, pela primeira letra do diagnóstico principal. Exceções: D00 a D48 é câncer, D50 a D89 é sangue, S e T são lesões e traumas. Exemplo: J é respiratório, I é circulatório. Grupos: lesões e traumas, respiratório, circulatório, infecciosas, digestivo, gravidez e parto, câncer, saúde mental e outros. Foi escolhido por ser padrão internacional, cobrir 100% dos diagnósticos e ser fácil de explicar.",
+    "palavras_chave": [
+      "grupo de doença",
+      "cid-10",
+      "capítulo",
+      "classificação",
+      "classificar_grupo"
+    ]
+  },
+  {
+    "id": 89,
+    "categoria": "Regras e cálculos",
+    "pergunta": "Como vocês definem quem foi internado fora do município?",
+    "resposta": "Quando o município onde o paciente mora (MUNIC_RES) é diferente do município do hospital (MUNIC_MOV), comparando os códigos de 6 dígitos. Vira a coluna fl_fora_municipio = 1.",
+    "palavras_chave": [
+      "fora do município",
+      "fl_fora_municipio",
+      "regra",
+      "deslocamento"
+    ]
+  },
+  {
+    "id": 90,
+    "categoria": "Regras e cálculos",
+    "pergunta": "Como é contado quem está internado em cada dia?",
+    "resposta": "Para cada dia, conta as AIHs com data de entrada até aquele dia e data de saída depois dele. Usa a base de 2021 a jun/2026 para incluir quem entrou antes de 2025. O script expande cada internação em dias com numpy, sem laço.",
+    "palavras_chave": [
+      "internados por dia",
+      "censo diário",
+      "ocupação diária",
+      "fato_ocupacao_diaria",
+      "cálculo"
+    ]
+  },
+  {
+    "id": 91,
+    "categoria": "Regras e cálculos",
+    "pergunta": "Como é feita a conta do ganho simulado?",
+    "resposta": "r x dias acima do típico / permanência média. Com r = 10%: 80.629 / 4,01, o que dá cerca de 20 mil internações. No Power BI: Leitos-dia liberados = [Dias acima do típico] x [Valor Redução %] e Internações a mais = Leitos-dia liberados / Permanência média.",
+    "palavras_chave": [
+      "fórmula",
+      "simulador",
+      "ganho",
+      "redução %",
+      "parâmetro"
+    ]
+  },
+  {
+    "id": 92,
+    "categoria": "Dados (SIH)",
+    "pergunta": "Quais bases de dados o painel usa, e por que não CNES e IBGE?",
+    "resposta": "Só o SIH/SUS. O CNES (leitos existentes, daria taxa de ocupação) e o IBGE (população, daria taxa por habitante) foram avaliados e existem no projeto, mas o grupo decidiu por uma base só, para manter o modelo simples, auditável e 100% coerente. O IBGE entra só como tabela de nomes de municípios. O CNES fica como evolução declarada.",
+    "palavras_chave": [
+      "fonte",
+      "base",
+      "sih",
+      "cnes",
+      "ibge",
+      "datasus",
+      "origem dos dados",
+      "população"
+    ]
+  },
+  {
+    "id": 93,
+    "categoria": "Dados (SIH)",
+    "pergunta": "Por que usar o SIH?",
+    "resposta": "É a base de cobrança do SUS: o hospital só recebe se registrar a internação, então a cobertura da rede SUS é alta. Tem na mesma linha datas de entrada e saída, dias, diagnóstico, procedimento, hospital, municípios e valor pago. É pública, gratuita, mensal, sem nome nem CPF, e o projeto já tinha o pipeline e os testes prontos para ela.",
+    "palavras_chave": [
+      "por que sih",
+      "escolha da base",
+      "cobertura",
+      "vantagens"
+    ]
+  },
+  {
+    "id": 94,
+    "categoria": "Dados (SIH)",
+    "pergunta": "O SIH cobre todas as internações do estado?",
+    "resposta": "Não. Só as pagas pelo SUS. Planos de saúde e particulares ficam de fora.",
+    "palavras_chave": [
+      "cobertura",
+      "planos de saúde",
+      "particular",
+      "privado",
+      "saúde suplementar"
+    ]
+  },
+  {
+    "id": 95,
+    "categoria": "Dados (SIH)",
+    "pergunta": "Quais arquivos entram na safra 2025?",
+    "resposta": "Competências de janeiro a dezembro de 2025: 12 arquivos, de RDGO2501 a RDGO2512. É o último ano completo disponível no projeto. Recorte: hospitais localizados em Goiás (UF 52), com pacientes de qualquer origem.",
+    "palavras_chave": [
+      "arquivos",
+      "rdgo2501",
+      "recorte geográfico",
+      "goiás",
+      "uf 52"
+    ]
+  },
+  {
+    "id": 96,
+    "categoria": "Dados (SIH)",
+    "pergunta": "Qual o histórico de dados disponível?",
+    "resposta": "De jan/2021 a jun/2026: 66 competências e 2,29 milhões de registros. É usado no calendário de ocupação e nas comparações entre anos. A cópia usada é de 23/09/2026.",
+    "palavras_chave": [
+      "histórico",
+      "2021",
+      "série histórica",
+      "anos disponíveis",
+      "66 competências"
+    ]
+  },
+  {
+    "id": 97,
+    "categoria": "Dados (SIH)",
+    "pergunta": "Como se chega de 467.902 registros a 457.403 internações?",
+    "resposta": "Os 12 arquivos de 2025 têm 467.902 registros. Saem 10.499 AIHs de continuação (IDENT = 5). Ficam 457.403 internações (IDENT = 1), que somam 1.835.227 leitos-dia em 260 hospitais.",
+    "palavras_chave": [
+      "funil",
+      "467.902",
+      "reconciliação",
+      "do bruto ao painel",
+      "10.499"
+    ]
+  },
+  {
+    "id": 98,
+    "categoria": "Dados (SIH)",
+    "pergunta": "Quais campos do SIH o painel usa?",
+    "resposta": "N_AIH, IDENT, MES_CMPT, DT_INTER, DT_SAIDA, DIAS_PERM, DIAG_PRINC, PROC_REA, CNES, MUNIC_RES, MUNIC_MOV e VAL_TOT. Para UTI, também UTI_MES_TO e VAL_UTI.",
+    "palavras_chave": [
+      "campos",
+      "colunas usadas",
+      "variáveis",
+      "quais colunas"
+    ]
+  },
+  {
+    "id": 99,
+    "categoria": "Dados (SIH)",
+    "pergunta": "O painel tem dado pessoal?",
+    "resposta": "Não. Os arquivos públicos não têm nome nem CPF, e o painel mostra só totais.",
+    "palavras_chave": [
+      "dado pessoal",
+      "cpf",
+      "nome do paciente",
+      "privacidade",
+      "anonimizado"
+    ]
+  },
+  {
+    "id": 100,
+    "categoria": "Dados (SIH)",
+    "pergunta": "Onde estão os arquivos do SIH no projeto?",
+    "resposta": "Brutos em data/raw/sih (um .parquet por mês, por ano) e tratados em data/silver/sih_multianual.parquet.",
+    "palavras_chave": [
+      "pasta",
+      "onde está",
+      "data/raw",
+      "silver",
+      "arquivo"
+    ]
+  },
+  {
+    "id": 101,
+    "categoria": "Limites",
+    "pergunta": "Dá para ver a vaga de leito de hoje?",
+    "resposta": "Não. O SIH é o registro de pagamento: a conta só fecha depois da alta e o DATASUS publica com 1 a 2 meses de atraso. Nenhuma base pública tem vaga em tempo real nem registro de recusa de leito; isso só existe no sistema de regulação do estado. O GiroSUS serve para planejamento, não para regulação.",
+    "palavras_chave": [
+      "tempo real",
+      "vaga",
+      "hoje",
+      "atraso",
+      "atualização",
+      "regulação",
+      "leito disponível",
+      "vaga livre"
+    ]
+  },
+  {
+    "id": 102,
+    "categoria": "Limites",
+    "pergunta": "O valor pago é o custo do hospital?",
+    "resposta": "Não. É o valor pago pelo SUS (VAL_TOT), que é o único valor público e auditável. O custo real do hospital não está em base pública. Por isso chamamos de valor pago, nunca de custo do hospital.",
+    "palavras_chave": [
+      "custo real",
+      "valor pago",
+      "val_tot",
+      "custo hospitalar"
+    ]
+  },
+  {
+    "id": 103,
+    "categoria": "Limites",
+    "pergunta": "Os valores incluem complementos do estado e do município?",
+    "resposta": "Nem sempre. Os valores são os da tabela federal registrados no SIH. Estados e municípios podem pagar complementos que nem sempre aparecem nessa base.",
+    "palavras_chave": [
+      "complemento",
+      "cofinanciamento",
+      "incentivo",
+      "tabela federal"
+    ]
+  },
+  {
+    "id": 104,
+    "categoria": "Limites",
+    "pergunta": "Por que o painel não mostra taxa de ocupação?",
+    "resposta": "Porque ela exige o número de leitos existentes, que vem do CNES, e o painel usa só o SIH. Ele mostra leitos ocupados. A taxa de ocupação e o giro de leito estão nos próximos passos.",
+    "palavras_chave": [
+      "taxa de ocupação",
+      "leitos existentes",
+      "capacidade",
+      "giro de leito"
+    ]
+  },
+  {
+    "id": 105,
+    "categoria": "Limites",
+    "pergunta": "Dá para saber se o paciente voltou a internar?",
+    "resposta": "Não. O SIH público não identifica a pessoa entre internações. O número da AIH identifica a internação, não o paciente.",
+    "palavras_chave": [
+      "reinternação",
+      "readmissão",
+      "mesmo paciente",
+      "voltou"
+    ]
+  },
+  {
+    "id": 106,
+    "categoria": "Limites",
+    "pergunta": "O tempo típico é uma referência oficial?",
+    "resposta": "Não, é referência interna: vem do próprio SIH. A referência oficial é a permanência média de cada procedimento na tabela SIGTAP, que é o próximo passo.",
+    "palavras_chave": [
+      "referência",
+      "oficial",
+      "sigtap",
+      "tempo típico",
+      "benchmark"
+    ]
+  },
+  {
+    "id": 107,
+    "categoria": "Limites",
+    "pergunta": "As internações muito longas estão completas?",
+    "resposta": "Não totalmente. As AIHs de continuação ficam de fora para não contar a mesma internação duas vezes, e isso subestima as permanências muito longas, sobretudo em saúde mental. Fica declarado.",
+    "palavras_chave": [
+      "subestimado",
+      "continuação",
+      "saúde mental",
+      "longa permanência",
+      "viés"
+    ]
+  },
+  {
+    "id": 108,
+    "categoria": "Limites",
+    "pergunta": "Por que a linha de internados cai no fim de dezembro?",
+    "resposta": "Porque parte das internações ainda não tinha sido cobrada. É o atraso de apresentação no fim do período, não uma queda real.",
+    "palavras_chave": [
+      "queda",
+      "dezembro",
+      "fim do ano",
+      "atraso de cobrança",
+      "linha diária"
+    ]
+  },
+  {
+    "id": 109,
+    "categoria": "Limites",
+    "pergunta": "Quais são os vieses conhecidos?",
+    "resposta": "Só rede SUS; competência não é a data da internação; a exclusão de IDENT = 5 subestima permanências muito longas; casemix diferente entre hospitais; atraso de apresentação no fim do período.",
+    "palavras_chave": [
+      "vieses",
+      "limitações",
+      "bias",
+      "fragilidades"
+    ]
+  },
+  {
+    "id": 110,
+    "categoria": "Limites",
+    "pergunta": "Por que 2026 não entra nas comparações?",
+    "resposta": "Porque está incompleto (o projeto vai até jun/2026). O histórico 2021 a 2025 fica no modelo só como filtro de tendência.",
+    "palavras_chave": [
+      "2026",
+      "incompleto",
+      "parcial",
+      "ano atual"
+    ]
+  },
+  {
+    "id": 111,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Por que a mediana e não a média?",
+    "resposta": "Poucos casos muito longos puxam a média. A mediana resiste a extremos e mostra o tempo típico. E foi por procedimento (não por diagnóstico) porque o procedimento define o pacote pago, então é a comparação mais justa. O próximo passo é usar a permanência oficial do SIGTAP.",
+    "palavras_chave": [
+      "mediana",
+      "média",
+      "outliers",
+      "extremos",
+      "por procedimento"
+    ]
+  },
+  {
+    "id": 112,
+    "categoria": "Perguntas de banca",
+    "pergunta": "É justo comparar hospitais diferentes?",
+    "resposta": "A comparação já é feita dentro do mesmo procedimento. Hospitais de referência recebem casos mais graves; o próximo passo é ajustar também por idade e complexidade.",
+    "palavras_chave": [
+      "comparação",
+      "justo",
+      "casemix",
+      "complexidade",
+      "gravidade"
+    ]
+  },
+  {
+    "id": 113,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Por que excluir as AIHs de continuação?",
+    "resposta": "Para não contar a mesma internação duas vezes: AIH de continuação (IDENT = 5) é a mesma internação cobrada em partes, mês a mês. O efeito colateral, declarado, é subestimar internações muito longas.",
+    "palavras_chave": [
+      "ident 5",
+      "continuação",
+      "duplicidade",
+      "exclusão"
+    ]
+  },
+  {
+    "id": 114,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Por que a safra 2025 e não vários anos?",
+    "resposta": "É o último ano completo (12 competências), com números claros e comparáveis. Somar 2021 a 2026 misturaria anos e 2026 é parcial. O histórico fica como filtro de ano para comparar.",
+    "palavras_chave": [
+      "2025",
+      "safra única",
+      "vários anos",
+      "por que 2025"
+    ]
+  },
+  {
+    "id": 115,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Por que olhar todas as causas e não só uma doença?",
+    "resposta": "O leito é dividido entre todas as doenças. A primeira versão olhava só o respiratório, o que mostrava a demanda de um grupo, mas não a ocupação real da rede. Com todas as causas aparece o descompasso entre quem ocupa e quem recebe.",
+    "palavras_chave": [
+      "todas as causas",
+      "respiratório",
+      "primeira versão",
+      "escopo"
+    ]
+  },
+  {
+    "id": 116,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Por que olhar o estado inteiro e não só Goiânia?",
+    "resposta": "Porque a dependência entre municípios só aparece olhando o estado inteiro. Goiânia vira um filtro.",
+    "palavras_chave": [
+      "estado inteiro",
+      "goiânia",
+      "escopo geográfico",
+      "abrangência"
+    ]
+  },
+  {
+    "id": 117,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Por que as regras ficam no Python e não no DAX?",
+    "resposta": "Uma regra só, testada e reproduzível. O Power BI fica leve e fácil de manter: o analista só importa os arquivos prontos, liga as tabelas e cria as medidas.",
+    "palavras_chave": [
+      "python",
+      "dax",
+      "regra de negócio",
+      "onde calcula"
+    ]
+  },
+  {
+    "id": 118,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Por que declarar os limites logo de cara?",
+    "resposta": "Tempo real, custo real e taxa de ocupação estão fora da base. Dizer antes evita promessa que o dado não cumpre. Na reunião, a dica é deixar os limites claros antes que perguntem.",
+    "palavras_chave": [
+      "limites",
+      "transparência",
+      "honestidade",
+      "expectativa"
+    ]
+  },
+  {
+    "id": 119,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Como vocês garantem que os números estão certos?",
+    "resposta": "O pipeline é reproduzível e testado com pytest: colunas críticas sem nulos, 66 competências, códigos de município válidos e staging igual à silver. Tem reconciliação (467.902 menos 10.499 = 457.403), a soma por grupo bate com o total, e o script do painel imprime a conferência da safra 2025, que tem que bater com o notebook 06 e o PDF.",
+    "palavras_chave": [
+      "validação",
+      "qualidade",
+      "testes",
+      "confiabilidade",
+      "conferência",
+      "auditoria"
+    ]
+  },
+  {
+    "id": 120,
+    "categoria": "Perguntas de banca",
+    "pergunta": "E a LGPD?",
+    "resposta": "Os arquivos públicos não têm nome nem CPF. O painel usa só totais e não usa campos que aproximam identidade, como CEP ou data de nascimento.",
+    "palavras_chave": [
+      "lgpd",
+      "privacidade",
+      "proteção de dados",
+      "cpf",
+      "anonimização"
+    ]
+  },
+  {
+    "id": 121,
+    "categoria": "Perguntas de banca",
+    "pergunta": "O Power BI aguenta o volume?",
+    "resposta": "Sim: cerca de 460 mil linhas por ano e 2,3 milhões no período todo.",
+    "palavras_chave": [
+      "volume",
+      "performance",
+      "desempenho",
+      "linhas",
+      "escala"
+    ]
+  },
+  {
+    "id": 122,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Funciona para outros estados?",
+    "resposta": "Sim. Basta baixar os arquivos RD da UF; as regras e o modelo são os mesmos.",
+    "palavras_chave": [
+      "outros estados",
+      "escalar",
+      "replicar",
+      "brasil",
+      "outra uf"
+    ]
+  },
+  {
+    "id": 123,
+    "categoria": "Perguntas de banca",
+    "pergunta": "Por que usar competência como recorte e não a data da internação?",
+    "resposta": "É como o DATASUS publica e como o dinheiro é pago, e fecha com os arquivos mensais. O calendário de ocupação usa as datas reais de entrada e saída.",
+    "palavras_chave": [
+      "competência",
+      "data da internação",
+      "recorte temporal"
+    ]
+  },
+  {
+    "id": 124,
+    "categoria": "Metodologia e código",
+    "pergunta": "Qual a metodologia do projeto, em resumo?",
+    "resposta": "Um ETL modular em camadas. Cada fonte tem seu próprio módulo de extração e de transformação, e os dados passam por camadas cada vez mais limpas até virar produto. Cada pedaço do código faz uma coisa só, lê de uma camada e grava na seguinte; a regra de negócio vive num lugar só, e os testes garantem que a base está certa antes de alguém analisar. Do .dbc ao painel são quatro comandos: converter, pipeline, promover e gerar o modelo.",
+    "palavras_chave": [
+      "metodologia",
+      "arquitetura",
+      "etl",
+      "resumo técnico",
+      "como funciona o código"
+    ]
+  },
+  {
+    "id": 125,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que são as camadas raw, staging, silver e gold?",
+    "resposta": "É a arquitetura medalhão: cada camada tem um papel e só lê a anterior. raw: arquivos mensais do DATASUS e planilhas do IBGE, tudo como texto (no Git, menos os .dbc). staging: saída do pipeline, fora do Git. silver: as mesmas 3 bases, conferidas pelos testes, lidas pelas análises. gold: as 8 tabelas do painel em CSV, para o Power BI (fora do Git, a fato passa de 250 MB). Ninguém analisa o raw direto, ninguém escreve na silver sem passar pelos testes, e o Power BI só enxerga o gold.",
+    "palavras_chave": [
+      "camadas",
+      "raw",
+      "staging",
+      "silver",
+      "gold",
+      "medalhão",
+      "bronze",
+      "lakehouse"
+    ]
+  },
+  {
+    "id": 126,
+    "categoria": "Metodologia e código",
+    "pergunta": "Por que o pipeline não grava direto na silver?",
+    "resposta": "Para a silver ser sempre uma versão conferida. O pipeline grava na staging, o promover_silver.py roda os testes e só copia para a silver se passarem. É uma área de quarentena.",
+    "palavras_chave": [
+      "quarentena",
+      "staging",
+      "silver",
+      "promoção"
+    ]
+  },
+  {
+    "id": 127,
+    "categoria": "Metodologia e código",
+    "pergunta": "Qual o tamanho de cada base na silver?",
+    "resposta": "sih_multianual.parquet: 2.286.755 linhas, 23 colunas, 1 linha = 1 AIH (jan/2021 a jun/2026). cnes_multianual.parquet: 198.448 linhas, 12 colunas, 1 linha = 1 tipo de leito de 1 hospital em 1 mês (jan/2021 a jul/2026). populacao_multianual.parquet: 33.422 linhas, 10 colunas, 1 linha = 1 município em 1 ano (2021 a 2026).",
+    "palavras_chave": [
+      "tamanho",
+      "linhas",
+      "volume",
+      "bases",
+      "parquet"
+    ]
+  },
+  {
+    "id": 128,
+    "categoria": "Metodologia e código",
+    "pergunta": "Como é o mapa de pastas do repositório?",
+    "resposta": "src/ (o pipeline: config.py, converter_dbc.py, pipeline.py, promover_silver.py, extract/, transform/, orchestration/). tests/ (pytest). notebooks/ (01 a 06). data/ (raw, staging, silver, gold/girosus). gerar_modelo_bi_girosus.py na raiz. dashboard/ (PDF do painel). docs/ (dicionário e PDF do código). Mais requirements.txt, .vscode/settings.json, .gitignore e README.md.",
+    "palavras_chave": [
+      "pastas",
+      "estrutura",
+      "repositório",
+      "árvore",
+      "arquivos",
+      "mapa"
+    ]
+  },
+  {
+    "id": 129,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que faz o config.py?",
+    "resposta": "É o painel de controle: um arquivo sem funções, só constantes, e todo o resto importa dele. Tem os caminhos (PROJECT_ROOT, DATA_DIR, RAW_DIR, STAGING_DIR, SILVER_DIR e as pastas de cada fonte), o período (ANO_INICIAL 2021, ANO_FINAL 2026, ANOS) e a UF (GO, código 52). Mudou de estado ou de período, é só mexer aqui.",
+    "palavras_chave": [
+      "config",
+      "configuração",
+      "constantes",
+      "caminhos",
+      "anos",
+      "uf"
+    ]
+  },
+  {
+    "id": 130,
+    "categoria": "Metodologia e código",
+    "pergunta": "Por que usar Path(__file__) no config.py?",
+    "resposta": "Para o caminho da pasta data ser calculado a partir do próprio arquivo, e não de onde o terminal está. Assim o código funciona de qualquer pasta. O script do GiroSUS e os notebooks usam caminhos relativos, então precisam rodar da pasta certa (raiz e notebooks/).",
+    "palavras_chave": [
+      "path",
+      "__file__",
+      "caminho relativo",
+      "pathlib"
+    ]
+  },
+  {
+    "id": 131,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que faz a pasta extract?",
+    "resposta": "Só lê e junta, sem transformar; cada arquivo devolve um DataFrame com os meses empilhados. sih.py: COLUNAS_SIH (22 colunas), listar_arquivos_sih() e extrair_sih(), que marca ARQUIVO_ORIGEM e para com FileNotFoundError se não achar arquivo. cnes.py: mesmo molde, 9 colunas do arquivo LT. ibge.py: lê as planilhas de 2021, 2022 (TCU/Censo), 2024, 2025 e 2026 com códigos como texto; 2023 não existe e é calculado no transform.",
+    "palavras_chave": [
+      "extract",
+      "extração",
+      "extrair_sih",
+      "leitura",
+      "colunas_sih"
+    ]
+  },
+  {
+    "id": 132,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que faz a pasta transform?",
+    "resposta": "Padroniza cada fonte sem filtrar linhas de negócio. sih.py: só converte DT_INTER para data, com errors=\"raise\" para parar se tiver data inválida. cnes.py: tira ano e mês do nome do arquivo e converte QT_EXIST, QT_SUS e QT_NSUS para número. populacao.py (o mais complexo): padroniza as planilhas, monta o código IBGE de 7 dígitos, limpa a população e calcula 2023 pela média de 2022 e 2024. O _ no começo do nome indica função interna.",
+    "palavras_chave": [
+      "transform",
+      "transformação",
+      "padronizar",
+      "populacao.py",
+      "2023 interpolado"
+    ]
+  },
+  {
+    "id": 133,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que fazem o pipeline.py e o Prefect?",
+    "resposta": "O pipeline.py roda cada fonte em processar_x(): extrair, transformar, gravar na staging e mostrar linhas, colunas e tempo. executar_pipeline() roda as três. O prefect_flow.py é o mesmo pipeline como flow do Prefect (cada etapa vira @task): registra cada execução, mostra qual etapa falhou e permite agendar, rodando local sem servidor. Os dois chamam as mesmas funções, então a lógica não é duplicada.",
+    "palavras_chave": [
+      "pipeline",
+      "prefect",
+      "orquestração",
+      "flow",
+      "task",
+      "agendar"
+    ]
+  },
+  {
+    "id": 134,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que fazem o promover_silver.py e o converter_dbc.py?",
+    "resposta": "promover_silver.py roda os testes da staging e, só se passarem, copia os 3 arquivos para a silver e roda o teste staging x silver; se algo falhar, a silver fica como estava. converter_dbc.py procura em data/raw todo .dbc sem .parquet ao lado e converte com o PySUS, com colunas como texto.",
+    "palavras_chave": [
+      "promover",
+      "converter",
+      "dbc",
+      "pysus",
+      "silver"
+    ]
+  },
+  {
+    "id": 135,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais são os testes automáticos?",
+    "resposta": "15 testes com pytest, lendo a staging. SIH: cobertura de 66 competências (2021-01 a 2026-06), municípios com 6 dígitos, colunas críticas sem nulos, datas válidas. CNES: chave sem duplicados, existentes = SUS + não SUS, 67 competências (até 2026-07), colunas-chave sem nulos. População: município + ano único, código com 7 dígitos, anos 2021 a 2026, 2023 com 5.570 municípios marcado como cálculo próprio. E staging igual à silver nas 3 bases.",
+    "palavras_chave": [
+      "testes",
+      "pytest",
+      "qualidade",
+      "15 testes",
+      "test_sih",
+      "validação"
+    ]
+  },
+  {
+    "id": 136,
+    "categoria": "Metodologia e código",
+    "pergunta": "Qual a diferença entre teste de qualidade e de regressão?",
+    "resposta": "Qualidade: o dado faz sentido? Regressão (staging x silver): o dado mudou sem ninguém saber? Se o de regressão falhar de propósito, por exemplo com colunas novas, a solução é promover a staging.",
+    "palavras_chave": [
+      "regressão",
+      "teste de qualidade",
+      "tipos de teste"
+    ]
+  },
+  {
+    "id": 137,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que é o conftest.py e o que é fixture?",
+    "resposta": "Fixture é um dado preparado uma vez e entregue aos testes que pedem por ele. O conftest.py carrega cada base da staging uma vez só (scope=\"session\") e entrega pelos nomes df_sih, df_cnes e df_populacao.",
+    "palavras_chave": [
+      "conftest",
+      "fixture",
+      "pytest",
+      "df_sih"
+    ]
+  },
+  {
+    "id": 138,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que tem em cada notebook?",
+    "resposta": "01 a 03: exploração do SIH, do CNES e do IBGE (01 e 02 leem .dbc e não rodam num clone novo). 04: primeira versão da consolidação; a última célula grava na silver, não rodar sem necessidade. 05: análise integrada de SIH, CNES e população. 06: análise do GiroSUS com as 34 perguntas da safra 2025, com os mesmos números do script e do PDF. Regra de ouro: notebooks de análise (05 e 06) leem só a silver.",
+    "palavras_chave": [
+      "notebooks",
+      "jupyter",
+      "exploração",
+      "análise",
+      "notebook 06"
+    ]
+  },
+  {
+    "id": 139,
+    "categoria": "Metodologia e código",
+    "pergunta": "Como é a estrutura do notebook 06?",
+    "resposta": "1 configuração, 2 carregamento, 3 regras e funil (467.902 para 457.403), 4 colunas do produto (leito-dia, grupo, tempo típico), 5 a 12 os três níveis de perguntas, 13 curiosidades de pagamento, 14 resumo para a venda, 15 conclusão e limites. Usa funções pequenas (classificar_grupo, resumo, censo_diario) para não repetir código.",
+    "palavras_chave": [
+      "notebook 06",
+      "girosus_ocupacao_leitos",
+      "estrutura",
+      "seções"
+    ]
+  },
+  {
+    "id": 140,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que faz o gerar_modelo_bi_girosus.py?",
+    "resposta": "É a camada do produto, por isso fica na raiz, fora do pipeline. Lê a silver, filtra IDENT = 1, aplica as regras do GiroSUS e grava as 8 tabelas do Power BI em data/gold/girosus (separador ; e decimal ,). Funções: classificar_grupo, carregar_sih, carregar_valor_uti (lê VAL_UTI dos brutos, e se não tiver, avisa e segue), nomes_municipios, montar_fato_internacoes, montar_fato_ocupacao, montar_dim_tempo, main e conferir_saida. Leva cerca de 1 minuto e meio.",
+    "palavras_chave": [
+      "gold",
+      "script",
+      "modelo bi",
+      "gerar modelo",
+      "camada do produto"
+    ]
+  },
+  {
+    "id": 141,
+    "categoria": "Metodologia e código",
+    "pergunta": "Como o tempo típico aparece no código?",
+    "resposta": "Em duas linhas do script: fato[\"tempo_tipico\"] = fato.groupby([\"safra\", \"proc_rea\"])[\"leito_dias\"].transform(\"median\") e fato[\"dias_acima_tipico\"] = (fato[\"leito_dias\"] - fato[\"tempo_tipico\"]).clip(lower=0).",
+    "palavras_chave": [
+      "código",
+      "groupby",
+      "median",
+      "pandas",
+      "tempo típico no código"
+    ]
+  },
+  {
+    "id": 142,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que o script confere no final?",
+    "resposta": "Imprime os totais esperados da safra 2025: 457.403 internações, 1.835.227 leitos-dia, R$ 726,1 milhões, 43,9% acima do típico e pico de 5.722 internados em 20/05/2025. Se não bater com o notebook 06 e o PDF, algo mudou na silver. O conferir_saida() também para com ERRO se faltar algum dos 8 CSVs ou coluna.",
+    "palavras_chave": [
+      "autoconferência",
+      "conferência",
+      "totais esperados",
+      "checagem"
+    ]
+  },
+  {
+    "id": 143,
+    "categoria": "Metodologia e código",
+    "pergunta": "Como rodar o projeto inteiro, na ordem?",
+    "resposta": "No Git Bash, na raiz. 0 (uma vez): py -3.12 -m venv .venv, source .venv/Scripts/activate e pip install -r requirements.txt. 1 (mês novo): python -m src.converter_dbc. 2: python -m src.pipeline (ou python -m src.orchestration.prefect_flow). 3: python -m src.promover_silver. 4 (opcional): python -m pytest, que deve dar 15 passed. 5: python gerar_modelo_bi_girosus.py.",
+    "palavras_chave": [
+      "rodar",
+      "executar",
+      "comandos",
+      "passo a passo",
+      "instalação",
+      "venv"
+    ]
+  },
+  {
+    "id": 144,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que rodar para cada situação?",
+    "resposta": "Só atualizar o Power BI com a silver atual: passo 5. Incluir um mês novo do SIH ou CNES: baixar o .dbc e rodar os passos 1, 2, 3 e 5 (e ajustar os testes de cobertura). Estudar os números: abrir o notebook 06 e Run All. Conferir que tudo funciona: passos 1 a 5 e o roteiro do README.",
+    "palavras_chave": [
+      "mês novo",
+      "atualizar",
+      "incluir dados",
+      "quero rodar"
+    ]
+  },
+  {
+    "id": 145,
+    "categoria": "Metodologia e código",
+    "pergunta": "O comando não mostrou nada ou apareceu aviso amarelo. E agora?",
+    "resposta": "No Windows, python sem o .venv ativo pode chamar um atalho da Microsoft Store que não faz nada: ative o ambiente ou use .venv/Scripts/python.exe. Avisos amarelos (DeprecationWarning) vêm das bibliotecas (dateutil, NumPy), não do projeto, e não mudam nenhum número. Só é problema se aparecer ERRO ou FAILED.",
+    "palavras_chave": [
+      "erro",
+      "problema",
+      "microsoft store",
+      "deprecationwarning",
+      "aviso",
+      "não funciona"
+    ]
+  },
+  {
+    "id": 146,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais bibliotecas o projeto usa?",
+    "resposta": "pandas 2.3.3 (tabelas), pyarrow 25.0.1 (Parquet e comparação staging x silver), pysus 2.11.2 (ler e converter .dbc), openpyxl e xlrd (planilhas do IBGE), prefect 3.8.6 (orquestração opcional), pytest 9.1.1 (testes) e ipykernel abaixo de 7 (a versão 7 trava a extensão Jupyter do VS Code). Python 3.12.",
+    "palavras_chave": [
+      "bibliotecas",
+      "requirements",
+      "dependências",
+      "versões",
+      "pandas",
+      "python"
+    ]
+  },
+  {
+    "id": 147,
+    "categoria": "Metodologia e código",
+    "pergunta": "Para que servem o README, o .gitignore e o .vscode?",
+    "resposta": "README.md: porta de entrada, com produto, onde está cada coisa, como rodar, regras, modelo, dicionário, testes e como atualizar. .gitignore: deixa fora do Git os .dbc e .dbf, microdados do Censo, data/staging, data/gold/girosus, caches e o .venv. .vscode/settings.json: faz o VS Code usar o Python do .venv e rodar notebooks a partir da pasta deles.",
+    "palavras_chave": [
+      "readme",
+      "gitignore",
+      "vscode",
+      "arquivos de apoio",
+      "git"
+    ]
+  },
+  {
+    "id": 148,
+    "categoria": "Metodologia e código",
+    "pergunta": "Por que Parquet por dentro e CSV na entrega?",
+    "resposta": "Raw, staging e silver ficam em Parquet, que é colunar, compacto e guarda o tipo de cada coluna. A saída do painel (gold) é CSV, o formato que o time de BI usa.",
+    "palavras_chave": [
+      "parquet",
+      "csv",
+      "formato",
+      "arquivo colunar"
+    ]
+  },
+  {
+    "id": 149,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais as convenções de código do projeto?",
+    "resposta": "Nomes em português (extrair_sih), snake_case, MAIÚSCULAS para constantes, verbo no nome da função (extrair_, transformar_, processar_, montar_), _ para função interna, type hints, pathlib em vez de texto, um comentário por bloco, códigos como texto para não perder zeros à esquerda (CNES 0965324), erro explícito para parar cedo, coluna ARQUIVO_ORIGEM para rastrear, nomes de arquivo que dizem o conteúdo e notebooks numerados.",
+    "palavras_chave": [
+      "convenções",
+      "padrão de código",
+      "boas práticas",
+      "estilo",
+      "snake_case",
+      "type hints"
+    ]
+  },
+  {
+    "id": 150,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais as dívidas técnicas do projeto?",
+    "resposta": "1 Download dos .dbc ainda é manual. 2 Notebooks 01, 02 e 04 dependem dos .dbc. 3 Notebook 04 grava na silver com DT_INTER como texto. 4 VAL_UTI não está na silver (o script lê do raw). 5 Regras de negócio duplicadas entre notebook 06 e script (sugestão: um módulo src/girosus.py). Para a avaliação: já resolvemos a promoção automática, as mensagens do pipeline e a conversão dos .dbc; as que restam são de organização e não mudam os números.",
+    "palavras_chave": [
+      "dívida técnica",
+      "pontos de atenção",
+      "melhorias",
+      "problemas conhecidos",
+      "débito"
+    ]
+  },
+  {
+    "id": 151,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que é ETL e pipeline?",
+    "resposta": "ETL é Extract, Transform, Load: extrair, transformar e carregar. É o que o src/ faz. Pipeline é a sequência automática de etapas; aqui, extract, transform e gravar.",
+    "palavras_chave": [
+      "etl",
+      "pipeline",
+      "glossário",
+      "extract transform load"
+    ]
+  },
+  {
+    "id": 152,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que é módulo, DataFrame e ambiente virtual?",
+    "resposta": "Módulo é um arquivo .py que pode ser importado por outro (ex.: src.extract.sih). DataFrame é a tabela do pandas, linhas e colunas na memória. Ambiente virtual (.venv) é uma instalação de Python só do projeto, com as versões do requirements.",
+    "palavras_chave": [
+      "módulo",
+      "dataframe",
+      "venv",
+      "ambiente virtual",
+      "glossário"
+    ]
+  },
+  {
+    "id": 153,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que é modelo estrela, fato e dimensão?",
+    "resposta": "Modelo estrela é uma tabela fato no centro ligada a dimensões; é como o gold está organizado para o Power BI. Fato é o que aconteceu (a internação). Dimensão é como filtrar (tempo, hospital, doença).",
+    "palavras_chave": [
+      "modelo estrela",
+      "star schema",
+      "fato",
+      "dimensão",
+      "glossário"
+    ]
+  },
+  {
+    "id": 154,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais arquivos o Power BI usa?",
+    "resposta": "8 CSVs em data/gold/girosus: fato_internacoes (uma internação regular, 2,2 mi linhas, págs. 1 a 6), fato_ocupacao_diaria (hospital x dia x grupo de doença, 2,0 mi, págs. 1 e 7), dim_tempo (2.557), dim_diagnostico (8.327), dim_procedimento (1.586), dim_hospital (303), dim_municipio_residencia (2.362) e dim_municipio_atendimento (2.362). Importar por Obter dados > Texto/CSV, separador ; e decimal ,, deixando cnes, proc_rea, cid e códigos de município como Texto.",
+    "palavras_chave": [
+      "power bi",
+      "csv",
+      "importar",
+      "8 arquivos",
+      "tabelas do modelo"
+    ]
+  },
+  {
+    "id": 155,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que precisa preencher à mão no modelo?",
+    "resposta": "Opcional, mas recomendado: dim_hospital.csv (coluna nome_hospital, pela consulta pública do CNES) e dim_procedimento.csv (coluna nome_procedimento, pela tabela SIGTAP). Salve o .csv no Excel e clique em Atualizar no Power BI.",
+    "palavras_chave": [
+      "preencher",
+      "manual",
+      "nome_hospital",
+      "nome_procedimento",
+      "tabela de apoio"
+    ]
+  },
+  {
+    "id": 156,
+    "categoria": "Metodologia e código",
+    "pergunta": "Como ligar as tabelas no Power BI?",
+    "resposta": "Todas ativas, do lado 1 para o lado muitos: dim_tempo[data] com fato_internacoes[data_internacao] e com fato_ocupacao_diaria[data]; dim_diagnostico[cid], dim_procedimento[proc_rea] e dim_hospital[cnes] com as colunas iguais da fato_internacoes; dim_hospital[cnes] também com fato_ocupacao_diaria[cnes]; dim_municipio_residencia[codigo] com munic_residencia e dim_municipio_atendimento[codigo] com munic_atendimento (são duas tabelas separadas, por isso as duas ficam ativas).",
+    "palavras_chave": [
+      "relacionamentos",
+      "modelo",
+      "ligar tabelas",
+      "chaves",
+      "cardinalidade"
+    ]
+  },
+  {
+    "id": 157,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais ajustes fazer depois de importar no Power BI?",
+    "resposta": "Marcar dim_tempo como tabela de datas. Classificar nome_mes por mes, nome_dia por dia_semana e faixa_duracao por ordem_faixa. Filtro de página safra = 2025 nas páginas 1 a 6; na página 7 e na linha diária, dim_tempo[ano] = 2025. Na página 7, usar grupo_doenca da fato_ocupacao_diaria. Criar o parâmetro Redução % (intervalo numérico de 0,05 a 0,30, incremento 0,05, padrão 0,10).",
+    "palavras_chave": [
+      "ajustes",
+      "tabela de datas",
+      "classificar",
+      "parâmetro",
+      "filtro de página"
+    ]
+  },
+  {
+    "id": 158,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais são as medidas DAX do painel?",
+    "resposta": "Numa tabela vazia _Medidas: Internações = COUNTROWS(fato_internacoes). Leitos-dia = SUM(leito_dias). Permanência média, R$ por leito-dia e R$ por internação com DIVIDE. Valor pago = SUM(valor_pago). Hospitais = DISTINCTCOUNT(cnes). % das internações, % dos leitos-dia e % do valor pago com CALCULATE e ALL(dim_diagnostico). Dias acima do típico e % acima do típico. Internações longas (leito_dias > 15). % fora do município e % leitos-dia de quem mora fora. Valor UTI e R$ por dia de UTI. Internados, entradas e altas por dia com AVERAGEX sobre dim_tempo[data]. Leitos-dia liberados e Internações a mais para o simulador.",
+    "palavras_chave": [
+      "dax",
+      "medidas",
+      "fórmulas",
+      "countrows",
+      "calculate",
+      "power bi"
+    ]
+  },
+  {
+    "id": 159,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais visuais tem a página 1 (Visão geral)?",
+    "resposta": "Pergunta: qual é o tamanho da ocupação de leitos do SUS em Goiás? 5 cartões: leitos-dia (1,84 mi), internações (457 mil), permanência média (4,0), valor pago (R$ 726 mi) e R$ por leito-dia (396). Linha diária com dim_tempo[data] e a medida Internados por dia (pico 5.722), filtrada por dim_tempo[ano] = 2025.",
+    "palavras_chave": [
+      "página 1",
+      "visão geral",
+      "cartões",
+      "linha diária",
+      "visuais"
+    ]
+  },
+  {
+    "id": 160,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais visuais tem a página 2 (O que ocupa o leito)?",
+    "resposta": "Barras agrupadas de 3 lentes por dim_diagnostico[grupo_doenca] com % das internações, % dos leitos-dia e % do valor pago: barra de leitos-dia maior que a de custo quer dizer que o grupo ocupa mais do que recebe. Ranking de procedimentos por nome_procedimento (ou proc_rea), Top 10 por leitos-dia (pneumonia 143.480).",
+    "palavras_chave": [
+      "página 2",
+      "o que ocupa o leito",
+      "três lentes",
+      "ranking de procedimentos",
+      "visuais"
+    ]
+  },
+  {
+    "id": 161,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais visuais tem a página 3 (Hospitais)?",
+    "resposta": "Barras dos 10 hospitais com mais leitos-dia, coloridas pela regra % acima do típico maior ou igual a 55%. Tabela com cnes, município, leitos-dia, valor pago, R$ por leito-dia, permanência média e % acima do típico. Drill-through do hospital para a página 6.",
+    "palavras_chave": [
+      "página 3",
+      "hospitais",
+      "barras",
+      "tabela de hospitais",
+      "drill-through",
+      "visuais"
+    ]
+  },
+  {
+    "id": 162,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais visuais tem a página 4 (Municípios)?",
+    "resposta": "Rosca de onde ficam os leitos (Top 5, Goiânia 44,7%). Barras de dependência por município de residência, % fora do município, com internações de 3.000 ou mais e fl_goias = 1 (Inhumas 67%). Cartão Goiânia com % leitos-dia de quem mora fora (56,6%). Matriz origem x destino com internações e fl_fora_municipio = 1.",
+    "palavras_chave": [
+      "página 4",
+      "municípios",
+      "rosca",
+      "matriz origem destino",
+      "visuais"
+    ]
+  },
+  {
+    "id": 163,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais visuais tem a página 5 (Custo para o SUS)?",
+    "resposta": "Barras de R$ por leito-dia por grupo de doença, com linha constante na média (396). Tabela de valor pago e R$ por internação por grupo. Linha mensal do valor pago por competência.",
+    "palavras_chave": [
+      "página 5",
+      "custo",
+      "valor por leito-dia",
+      "linha mensal",
+      "visuais"
+    ]
+  },
+  {
+    "id": 164,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais visuais tem a página 6 (Permanência além do típico)?",
+    "resposta": "Colunas por faixa_duracao com internações e leitos-dia em % do total geral. Barras de dias acima do típico por grupo de doença, com rótulo do % acima do típico. Cartão simulador com a segmentação do parâmetro Redução %: leitos-dia liberados e internações a mais (10% dá cerca de 20 mil).",
+    "palavras_chave": [
+      "página 6",
+      "permanência",
+      "simulador",
+      "faixa de duração",
+      "visuais"
+    ]
+  },
+  {
+    "id": 165,
+    "categoria": "Metodologia e código",
+    "pergunta": "Quais visuais tem a página 7 (Calendário de ocupação)?",
+    "resposta": "Mapa de calor com nome_mes nas linhas e nome_dia nas colunas, com internados por dia em formatação azul. Colunas de entradas e altas por dia da semana. Curva por grupo (eixo nome_mes, legenda grupo_doenca da fato_ocupacao_diaria) para 3 grupos. Tudo com dim_tempo[ano] = 2025.",
+    "palavras_chave": [
+      "página 7",
+      "calendário",
+      "mapa de calor",
+      "entradas e altas",
+      "visuais"
+    ]
+  },
+  {
+    "id": 166,
+    "categoria": "Metodologia e código",
+    "pergunta": "O que vale para todas as páginas do painel?",
+    "resposta": "Segmentações sincronizadas de safra, mês, hospital, município de residência e grupo de doença. Barra de botões com as 7 páginas. Cores: azul #1463D6, azul-claro #8DC2F7, azul-escuro #0B2545 e fundo #F3F8FD. Checklist final: os cartões da página 1 batem com a conferência, filtrar um hospital muda todas as páginas e o simulador em 10% mostra cerca de 20 mil.",
+    "palavras_chave": [
+      "cores",
+      "segmentações",
+      "navegação",
+      "checklist",
+      "identidade visual",
+      "paleta"
+    ]
+  },
+  {
+    "id": 167,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais tabelas existem no dicionário de dados?",
+    "resposta": "São 93 colunas. Na silver: SIH (internações, sih_multianual.parquet), CNES (leitos, cnes_multianual.parquet) e IBGE (população, populacao_multianual.parquet). No gold do GiroSUS: fato_internacoes, fato_ocupacao_diaria, dim_tempo, dim_diagnostico, dim_procedimento, dim_hospital, dim_municipio_residencia e dim_municipio_atendimento. O arquivo fica em docs/dicionário/dicionario_dados.csv.",
+    "palavras_chave": [
+      "dicionário",
+      "tabelas",
+      "colunas",
+      "metadados",
+      "93 colunas"
+    ]
+  },
+  {
+    "id": 168,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são ANO_CMPT e safra?",
+    "resposta": "ANO_CMPT (SIH, texto) é o ano da competência: o ano em que o hospital apresentou a AIH para pagamento. No gold vira safra (número), o filtro principal do painel. Exemplo: 2025.",
+    "palavras_chave": [
+      "ano_cmpt",
+      "safra",
+      "coluna",
+      "ano da competência"
+    ]
+  },
+  {
+    "id": 169,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são MES_CMPT e competencia?",
+    "resposta": "MES_CMPT (SIH, texto) é o mês da competência com 2 dígitos (ex.: 05). No gold, competencia é uma data com o 1º dia do mês, montada com ANO_CMPT + MES_CMPT (ex.: 2025-02-01).",
+    "palavras_chave": [
+      "mes_cmpt",
+      "competencia",
+      "mês",
+      "coluna"
+    ]
+  },
+  {
+    "id": 170,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são N_AIH e chave_aih?",
+    "resposta": "N_AIH (SIH, texto) é o número da AIH, a Autorização de Internação Hospitalar. Identifica a internação, não a pessoa. Exemplo: 5220103703310. No gold vira chave_aih.",
+    "palavras_chave": [
+      "n_aih",
+      "chave_aih",
+      "aih",
+      "autorização de internação",
+      "coluna"
+    ]
+  },
+  {
+    "id": 171,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é a coluna IDENT?",
+    "resposta": "Tipo da AIH (SIH, texto). IDENT = 1 é AIH regular, a única que entra no painel. IDENT = 5 é AIH de continuação (a mesma internação cobrada em partes), que fica de fora.",
+    "palavras_chave": [
+      "ident",
+      "tipo da aih",
+      "coluna",
+      "continuação",
+      "regular"
+    ]
+  },
+  {
+    "id": 172,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é SEQ_AIH5?",
+    "resposta": "Sequencial da AIH de longa permanência (SIH, texto). Em Goiás vem sempre 000.",
+    "palavras_chave": [
+      "seq_aih5",
+      "sequencial",
+      "longa permanência",
+      "coluna"
+    ]
+  },
+  {
+    "id": 173,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é a coluna CNES?",
+    "resposta": "Código do hospital no Cadastro Nacional de Estabelecimentos de Saúde, com 7 dígitos, guardado como texto para não perder zeros à esquerda (ex.: 0965324). Aparece no SIH, na base CNES e no gold (cnes em fato_internacoes, fato_ocupacao_diaria e dim_hospital, onde é a chave).",
+    "palavras_chave": [
+      "cnes",
+      "código do hospital",
+      "estabelecimento",
+      "coluna",
+      "chave"
+    ]
+  },
+  {
+    "id": 174,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são MUNIC_RES e munic_residencia?",
+    "resposta": "Município onde o paciente mora: código IBGE de 6 dígitos, sem o dígito verificador (ex.: 521930). No gold vira munic_residencia e liga com dim_municipio_residencia.",
+    "palavras_chave": [
+      "munic_res",
+      "munic_residencia",
+      "município de residência",
+      "coluna"
+    ]
+  },
+  {
+    "id": 175,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são MUNIC_MOV e munic_atendimento?",
+    "resposta": "Município onde fica o hospital, onde a internação aconteceu, com 6 dígitos (ex.: 520870). No gold vira munic_atendimento, que liga com dim_municipio_atendimento. Na dim_hospital, municipio_atendimento é o município mais frequente daquele CNES.",
+    "palavras_chave": [
+      "munic_mov",
+      "munic_atendimento",
+      "município do hospital",
+      "coluna"
+    ]
+  },
+  {
+    "id": 176,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são DT_INTER e data_internacao?",
+    "resposta": "Data de entrada do paciente no hospital. No SIH é convertida para data em src/transform/sih.py (ex.: 2025-01-25). No gold vira data_internacao, que liga com dim_tempo.",
+    "palavras_chave": [
+      "dt_inter",
+      "data_internacao",
+      "data de entrada",
+      "coluna"
+    ]
+  },
+  {
+    "id": 177,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são DT_SAIDA e data_saida?",
+    "resposta": "Data de saída (alta, transferência ou óbito). No SIH vem como texto no formato AAAAMMDD (ex.: 20250204). No gold vira data_saida, como data.",
+    "palavras_chave": [
+      "dt_saida",
+      "data_saida",
+      "data de saída",
+      "alta",
+      "coluna"
+    ]
+  },
+  {
+    "id": 178,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são DIAS_PERM e leito_dias?",
+    "resposta": "Dias de permanência da internação, que é o leito-dia dela. No SIH é texto com número (ex.: 3); no gold vira leito_dias, numérico.",
+    "palavras_chave": [
+      "dias_perm",
+      "leito_dias",
+      "permanência",
+      "coluna"
+    ]
+  },
+  {
+    "id": 179,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são UTI_MES_TO, dias_uti e fl_uti?",
+    "resposta": "UTI_MES_TO (SIH) é o total de dias em UTI na internação; 0 quer dizer que não usou UTI. No gold vira dias_uti, e fl_uti = 1 quando passou pela UTI (UTI_MES_TO maior que 0).",
+    "palavras_chave": [
+      "uti_mes_to",
+      "dias_uti",
+      "fl_uti",
+      "uti",
+      "coluna"
+    ]
+  },
+  {
+    "id": 180,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são VAL_TOT e valor_pago?",
+    "resposta": "Valor total pago pelo SUS pela internação, em R$ (ex.: 485.78). Não é o custo real do hospital. No gold vira valor_pago.",
+    "palavras_chave": [
+      "val_tot",
+      "valor_pago",
+      "valor",
+      "coluna"
+    ]
+  },
+  {
+    "id": 181,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são VAL_UTI e valor_uti?",
+    "resposta": "Parte do valor paga pela UTI, em R$. Ainda não está na silver: o script lê direto dos arquivos brutos (data/raw/sih). Fica vazio se os brutos não estiverem na máquina.",
+    "palavras_chave": [
+      "val_uti",
+      "valor_uti",
+      "uti",
+      "coluna"
+    ]
+  },
+  {
+    "id": 182,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são DIAG_PRINC e cid?",
+    "resposta": "Diagnóstico principal pela CID-10 (ex.: J189). A 1ª letra indica o capítulo (J = respiratório, I = circulatório). No gold vira cid e é a chave da dim_diagnostico, que também tem capitulo (a 1ª letra).",
+    "palavras_chave": [
+      "diag_princ",
+      "cid",
+      "diagnóstico",
+      "cid-10",
+      "capitulo",
+      "coluna"
+    ]
+  },
+  {
+    "id": 183,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são PROC_REA e proc_rea?",
+    "resposta": "Procedimento realizado, pela tabela SIGTAP, com 10 dígitos (ex.: 0303140151). É ele que define o valor pago. No gold é a chave da dim_procedimento.",
+    "palavras_chave": [
+      "proc_rea",
+      "procedimento",
+      "sigtap",
+      "coluna"
+    ]
+  },
+  {
+    "id": 184,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é a coluna MORTE?",
+    "resposta": "Indica se o paciente morreu na internação (SIH, texto). Os códigos estão no dicionário do DATASUS.",
+    "palavras_chave": [
+      "morte",
+      "óbito",
+      "mortalidade",
+      "coluna"
+    ]
+  },
+  {
+    "id": 185,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é a coluna ESPEC?",
+    "resposta": "Especialidade do leito em que o paciente ficou (SIH, texto, ex.: 03).",
+    "palavras_chave": [
+      "espec",
+      "especialidade",
+      "tipo de leito",
+      "coluna"
+    ]
+  },
+  {
+    "id": 186,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é a coluna CAR_INT?",
+    "resposta": "Caráter da internação: eletiva, urgência ou acidente (SIH, texto, ex.: 02).",
+    "palavras_chave": [
+      "car_int",
+      "caráter",
+      "eletiva",
+      "urgência",
+      "coluna"
+    ]
+  },
+  {
+    "id": 187,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são SEXO, IDADE e COD_IDADE?",
+    "resposta": "SEXO é o sexo do paciente. IDADE é a idade, na unidade indicada por COD_IDADE (dias, meses ou anos). As três chegam na silver quando alguém roda python -m src.promover_silver; se a silver for antiga, o teste test_sih_staging_igual_silver avisa.",
+    "palavras_chave": [
+      "sexo",
+      "idade",
+      "cod_idade",
+      "perfil do paciente",
+      "coluna"
+    ]
+  },
+  {
+    "id": 188,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é a coluna GESTAO?",
+    "resposta": "Tipo de gestão do hospital (SIH, texto). Chega na silver ao rodar python -m src.promover_silver.",
+    "palavras_chave": [
+      "gestao",
+      "gestão",
+      "estadual",
+      "municipal",
+      "coluna"
+    ]
+  },
+  {
+    "id": 189,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é a coluna ARQUIVO_ORIGEM?",
+    "resposta": "Nome do arquivo mensal do DATASUS de onde veio a linha. No SIH é RDGO + AAMM (ex.: RDGO2505.dbc), criada em src/extract/sih.py. No CNES é LTGO + AAMM (ex.: LTGO2101.dbc), criada em src/extract/cnes.py. Serve para rastrear cada linha.",
+    "palavras_chave": [
+      "arquivo_origem",
+      "rastreabilidade",
+      "origem",
+      "coluna"
+    ]
+  },
+  {
+    "id": 190,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são tempo_tipico e tempo_tipico_2025?",
+    "resposta": "tempo_tipico (fato_internacoes) é a mediana de dias do mesmo procedimento na mesma safra: mediana(DIAS_PERM) por safra e PROC_REA (ex.: 4). tempo_tipico_2025 (dim_procedimento) é a mesma mediana, só da safra 2025.",
+    "palavras_chave": [
+      "tempo_tipico",
+      "tempo_tipico_2025",
+      "mediana",
+      "coluna"
+    ]
+  },
+  {
+    "id": 191,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é dias_acima_tipico?",
+    "resposta": "Dias além do tempo típico, 0 se ficou menos: max(0, leito_dias menos tempo_tipico). Exemplo: 10 dias numa internação com típico de 4 dá 6.",
+    "palavras_chave": [
+      "dias_acima_tipico",
+      "excesso",
+      "coluna"
+    ]
+  },
+  {
+    "id": 192,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são faixa_duracao e ordem_faixa?",
+    "resposta": "faixa_duracao é a faixa de duração a partir de leito_dias: 0 dia, 1 a 3, 4 a 7, 8 a 15, 16 a 30 e mais de 30. ordem_faixa vai de 1 a 6 e serve só para classificar a faixa na ordem certa no Power BI.",
+    "palavras_chave": [
+      "faixa_duracao",
+      "ordem_faixa",
+      "faixa",
+      "coluna"
+    ]
+  },
+  {
+    "id": 193,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que é fl_fora_municipio?",
+    "resposta": "Número 0 ou 1. Vale 1 quando o paciente foi internado fora do município onde mora (MUNIC_RES diferente de MUNIC_MOV).",
+    "palavras_chave": [
+      "fl_fora_municipio",
+      "flag",
+      "fora do município",
+      "coluna"
+    ]
+  },
+  {
+    "id": 194,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais são as colunas da fato_ocupacao_diaria?",
+    "resposta": "cnes (hospital), data (dia, de 01/01/2021 a 30/06/2026), grupo_doenca (capítulo da CID-10), pacientes_internados (entrada até o dia e saída depois dele, ex.: 422), entradas (internações que começaram no dia, ex.: 94) e altas (saídas no dia, ex.: 88). Cada linha é um hospital, num dia, num grupo de doença.",
+    "palavras_chave": [
+      "fato_ocupacao_diaria",
+      "pacientes_internados",
+      "entradas",
+      "altas",
+      "colunas"
+    ]
+  },
+  {
+    "id": 195,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais são as colunas da dim_tempo?",
+    "resposta": "data (dia de 2020 a 2026), ano, mes, trimestre, nome_mes (jan a dez, classificar por mes), ano_mes (AAAA-MM), dia_semana (1 = segunda a 7 = domingo), nome_dia (seg a dom, classificar por dia_semana) e fl_fim_semana (1 = sábado ou domingo).",
+    "palavras_chave": [
+      "dim_tempo",
+      "calendário",
+      "nome_mes",
+      "dia_semana",
+      "fl_fim_semana",
+      "colunas"
+    ]
+  },
+  {
+    "id": 196,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais são as colunas da dim_diagnostico?",
+    "resposta": "cid (código CID-10, chave), capitulo (1ª letra do CID) e grupo_doenca (lesões e traumas, respiratório, circulatório, infecciosas, digestivo, gravidez e parto, câncer, saúde mental e outros).",
+    "palavras_chave": [
+      "dim_diagnostico",
+      "grupo_doenca",
+      "capitulo",
+      "colunas"
+    ]
+  },
+  {
+    "id": 197,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais são as colunas da dim_procedimento?",
+    "resposta": "proc_rea (código SIGTAP, chave), diagnostico_mais_comum (o CID que mais aparece com esse procedimento), tempo_tipico_2025 e nome_procedimento, que vem em branco e é preenchido pela tabela SIGTAP (ex.: tratamento de pneumonias ou influenza).",
+    "palavras_chave": [
+      "dim_procedimento",
+      "diagnostico_mais_comum",
+      "nome_procedimento",
+      "colunas"
+    ]
+  },
+  {
+    "id": 198,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais são as colunas da dim_hospital?",
+    "resposta": "cnes (chave), municipio_atendimento (código do município mais frequente para o CNES), nome_municipio (da tabela do IBGE) e nome_hospital, que vem em branco e é preenchido pela consulta pública do CNES.",
+    "palavras_chave": [
+      "dim_hospital",
+      "nome_hospital",
+      "nome_municipio",
+      "colunas"
+    ]
+  },
+  {
+    "id": 199,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais são as colunas das dimensões de município?",
+    "resposta": "dim_municipio_residencia e dim_municipio_atendimento têm as mesmas colunas: codigo (6 dígitos, chave), nome (da tabela do IBGE, ex.: Trindade), uf (ex.: GO) e fl_goias (1 = município de Goiás, código começando com 52).",
+    "palavras_chave": [
+      "dim_municipio",
+      "fl_goias",
+      "codigo",
+      "município",
+      "colunas"
+    ]
+  },
+  {
+    "id": 200,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais são os tipos de leito na base CNES?",
+    "resposta": "TP_UNID é o tipo de unidade (hospital geral, especializado, unidade mista). TP_LEITO é o grande tipo de leito (cirúrgico, clínico, complementar/UTI). CODLEITO é o tipo detalhado (ex.: 33 clínica geral, 75 UTI adulto tipo II). Lembrando: o CNES não entra no painel.",
+    "palavras_chave": [
+      "tp_unid",
+      "tp_leito",
+      "codleito",
+      "tipo de leito",
+      "cnes",
+      "coluna"
+    ]
+  },
+  {
+    "id": 201,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são QT_EXIST, QT_SUS e QT_NSUS?",
+    "resposta": "Colunas da base CNES, convertidas para número em src/transform/cnes.py. QT_EXIST: leitos existentes daquele tipo. QT_SUS: quantos estão disponíveis para o SUS. QT_NSUS: leitos não SUS (planos e particulares). O teste garante que existentes = SUS + não SUS.",
+    "palavras_chave": [
+      "qt_exist",
+      "qt_sus",
+      "qt_nsus",
+      "quantidade de leitos",
+      "cnes",
+      "coluna"
+    ]
+  },
+  {
+    "id": 202,
+    "categoria": "Dicionário de dados",
+    "pergunta": "O que são CODUFMUN, COMPETEN, ANO e MES na base CNES?",
+    "resposta": "CODUFMUN: município do estabelecimento (código IBGE de 6 dígitos). COMPETEN: competência no formato AAAAMM (ex.: 202101). ANO e MES: tirados do nome do arquivo em src/transform/cnes.py (LTGO2401 vira 2024, mês 1). Cada linha do CNES é 1 tipo de leito de 1 hospital em 1 mês.",
+    "palavras_chave": [
+      "codufmun",
+      "competen",
+      "ano",
+      "mes",
+      "cnes",
+      "coluna"
+    ]
+  },
+  {
+    "id": 203,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais são os códigos na base do IBGE?",
+    "resposta": "uf (sigla, GO), cod_uf (2 dígitos, Goiás = 52), cod_municipio (5 dígitos dentro do estado, ex.: 08707) e codigo_ibge_7 (código completo de 7 dígitos, ex.: 5208707). Os 6 primeiros dígitos batem com os códigos do SIH e do CNES.",
+    "palavras_chave": [
+      "ibge",
+      "codigo_ibge_7",
+      "cod_uf",
+      "cod_municipio",
+      "uf",
+      "coluna"
+    ]
+  },
+  {
+    "id": 204,
+    "categoria": "Dicionário de dados",
+    "pergunta": "Quais são as colunas de população do IBGE?",
+    "resposta": "municipio (nome), populacao (ex.: Goiânia 1.503.256), ano_referencia (2021 a 2026), ano_publicacao (vazio em 2023), origem (IBGE ou cálculo próprio com dados IBGE, em 2023) e tipo_dado (estimativa anual, Censo 2022 do TCU ou interpolação 2022 a 2024). Lembrando: a população não entra no painel; o IBGE serve só para os nomes dos municípios.",
+    "palavras_chave": [
+      "populacao",
+      "ano_referencia",
+      "ano_publicacao",
+      "origem",
+      "tipo_dado",
+      "ibge",
+      "coluna"
+    ]
+  }
+]
