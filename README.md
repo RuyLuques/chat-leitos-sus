@@ -76,14 +76,14 @@ Tem mais de 30 definições na página. É só digitar a palavra.
 - **Palavras marcadas em azul:** são as palavras da resposta que bateram com a sua busca.
 - **Chips (os botõezinhos):** filtram por categoria. O chip amarelo **Definições** mostra só o básico.
 - **Copiar resposta:** copia o texto pra você colar no WhatsApp, e-mail etc.
-- **Botão redondo no canto:** abre a mesma busca numa janelinha, tipo chat.
+- **Botão redondo no canto:** abre a mesma busca numa janelinha, tipo .
 - **Atalhos:** `/` leva o cursor pra busca. `Esc` limpa. Se já estiver limpo, `Esc` fecha a janelinha.
 - **Nomes de coluna:** pode digitar `dias_perm` ou `dias perm`, os dois funcionam.
 
 ## O que tem em cada arquivo
 
 ```
-chatbot-leitosus/
+chat-leitosus/
 ├── index.html       a estrutura da página (o "esqueleto")
 ├── style.css        o visual: cores, tamanhos, modo escuro, celular
 ├── app.js           o cérebro: carrega as perguntas, busca e desenha os cartões
@@ -192,7 +192,7 @@ Se a internet cair e o Fuse.js não carregar, a página continua funcionando com
 
 ## Como acrescentar perguntas sem quebrar nada
 
-O JSON é chato com pontuação. As regras que mais pegam:
+O JSON é o com pontuação. As regras que mais pegam:
 
 1. **Vírgula entre os blocos, mas nunca depois do último.**
 2. **Todo texto vai entre aspas duplas** (`"assim"`). Aspas simples não funcionam.
